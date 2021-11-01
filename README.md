@@ -50,12 +50,14 @@ $ npm start
 ```
 
 ### Running the project
+#### Bare metal
    - The user must have installed mongodb and npm
    - An .env file needs to be created for the [server](./.env.sample) folder (based on the corresponding .env.sample file).
    The following variables are required
       - `DB_DEV_HOST=` mongodb://database_ip:database_port/database_name
       - `HTTP_PORT=` server port (by default react will connect to port 4000)
       - `SERVER_SECRET=` server secret key
+      - `CITYLAB=` ALL (only needed to bypass publickey.pom)
    - An .env file is also required for the [client](./client/.env.sample) folder (based on the corresponding .env.sample file).
    The following variables are required
       - `REACT_APP_CITYLAB_LANGUAGES=` the language your cliend will use (it for example)
@@ -63,4 +65,17 @@ $ npm start
 
 ```sh
 $ npm start
+```
+
+#### Docker
+   - Both the server and client can be run in dedicated containers using the Dockerfile provided in the corresponding folder.
+
+```sh
+$ docker build -t image_name .
+$ docker run -it image_name
+```
+
+   - a docker-compose file is also provided for convenience
+```sh
+$ docker-compose up
 ```
