@@ -1,13 +1,29 @@
 services:
-  
-  client:
-    container_name: fsp-client
+
+  child-cliend:
+    container_name: fsp-child-client
     restart: always
     tty: true
-    build: ./client
+    build: ./client/child
+    ports:
+      - "2000:2000"
+    links:
+      - server
+    depends_on:
+      - server
+    networks:
+      - fsp-network
+  
+  adult-client:
+    container_name: fsp-adult-client
+    restart: always
+    tty: true
+    build: ./client/adult
     ports:
       - "3000:3000"
     links:
+      - server
+    depends_on:
       - server
     networks:
       - fsp-network
