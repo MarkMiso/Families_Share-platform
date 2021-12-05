@@ -2,6 +2,7 @@
   "recommendations": [
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
-    "dzannotti.vscode-babel-coloring"
+    "dzannotti.vscode-babel-coloring",
+    "bradlc.vscode-tailwindcss"
   ]
 }

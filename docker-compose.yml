@@ -1,12 +1,12 @@
 services:
 
-  child-cliend:
+  child-client:
     container_name: fsp-child-client
     restart: always
     tty: true
     build: ./client/child
     ports:
-      - "2000:2000"
+      - "2000:3000"
     links:
       - server
     depends_on:
