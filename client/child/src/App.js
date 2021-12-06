@@ -31,7 +31,7 @@ function App() {
     <div className="App">
       <header className="App-header">
       </header>
-      <body className="bg-gray-100 min-h-screen">
+      <body className="bg-gray-100 h-screen">
         <LandingScreen />
       </body>
     </div>
