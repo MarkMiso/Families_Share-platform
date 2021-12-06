@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import LandingHeader from "./LandingHeader";
 import LandingNavbar from "./LandingNavbar";
 import GroupList from "./GroupList";
-import Texts from "../Constants/Texts";
+import Texts from "../constants/Texts";
 import CardWithLink from "./CardWithLink";
 import withLanguage from "./LanguageContext";
 import Log from "./Log";
