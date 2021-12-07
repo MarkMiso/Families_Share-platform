@@ -15,7 +15,7 @@ function ProfileDropdown() {
   return (
     <Menu as="div" className="ml-3 relative">
     <div>
-      <Menu.Button className="flex text-sm rounded-full hover:ring-2">
+      <Menu.Button className="flex text-sm rounded-full focus:ring-2 ring-black">
         <span className="sr-only">Open user menu</span>
         <img
           className="h-8 w-8 rounded-full"

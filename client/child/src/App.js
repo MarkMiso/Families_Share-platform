@@ -1,5 +1,6 @@
 import React from "react";
 import Loadable from "react-loadable";
+import { Routes, Route } from "react-router-dom";
 import LoadingSpinner from "./components/LoadingSpinner";
 import axios from "axios";
 
@@ -31,8 +32,10 @@ function App() {
     <div className="App">
       <header className="App-header">
       </header>
-      <body className="bg-gray-100 h-screen">
-        <LandingScreen />
+      <body className="h-screen">
+        <Routes>
+          <Route exact path="/" element={<LandingScreen />} />
+        </Routes>
       </body>
     </div>
   );
