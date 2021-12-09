@@ -2,6 +2,7 @@ import React from "react";
 import Loadable from "react-loadable";
 import { Routes, Route } from "react-router-dom";
 import LoadingSpinner from "./components/LoadingSpinner";
+import { AuthProvider, RequireAuth } from "./components/AuthProvider";
 import axios from "axios";
 
 const Loading = <LoadingSpinner />;
@@ -10,6 +11,16 @@ const LandingScreen = Loadable({
   loader: () => import("./components/LandingScreen"),
   loading: () => Loading
 });
+
+const LoginScreen = Loadable({
+  loader: () => import("./components/LoginScreen"),
+  loading: () => Loading
+})
+
+const MyFamilyShare = Loadable({
+  loader: () => import("./components/MyFamilyShare"),
+  loading: () => Loading
+})
 
 axios.interceptors.request.use(
   config => {
@@ -32,11 +43,19 @@ function App() {
     <div className="App">
       <header className="App-header">
       </header>
-      <body className="h-screen">
-        <Routes>
-          <Route exact path="/" element={<LandingScreen />} />
-        </Routes>
-      </body>
+      <AuthProvider>
+        <body className="h-screen">
+          <Routes>
+            <Route exact path="/" element={<LandingScreen />} />
+            <Route path="/login" element={<LoginScreen />} />
+            <Route path="/myfamilyshare" element={
+              <RequireAuth>
+                <MyFamilyShare />
+              </RequireAuth>
+            } />
+          </Routes>
+        </body>
+      </AuthProvider>
     </div>
   );
 }
