@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const bcrypt = require('bcrypt')
 
 const childSchema = new mongoose.Schema(
   {
@@ -10,6 +11,14 @@ const childSchema = new mongoose.Schema(
     given_name: {
       type: String,
       required: true
+    },
+    username:{
+      type:String,
+      unique: true
+    },
+    password:{
+      type:String,
+      minLength: 8
     },
     family_name: {
       type: String,
@@ -34,6 +43,9 @@ const childSchema = new mongoose.Schema(
     suspended: {
       type: Boolean,
       required: true
+    },
+    isAccount:{
+      type: Boolean,
     },
     allergies: String,
     special_needs: String,
@@ -73,6 +85,23 @@ childSchema.post('findOne', (profile, next) => {
   }
   next()
 })
+
+childSchema.pre('save', function (next) {
+  const child = this
+  if (!child.isModified('password')) return next()
+  bcrypt.genSalt(10, (err, salt) => {
+    if (err) return next(err)
+    bcrypt.hash(child.password, salt, (err, hash) => {
+      if (err) return next(err)
+      child.password = hash
+      next()
+    })
+  })
+})
+
+childSchema.methods.comparePassword = function (candidatePassword) {
+  return bcrypt.compare(candidatePassword, this.password)
+}
 
 mongoose.pluralize(null)
 const model = mongoose.model('Child', childSchema)

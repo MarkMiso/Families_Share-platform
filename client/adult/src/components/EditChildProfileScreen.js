@@ -30,7 +30,7 @@ class EditChildProfileScreen extends React.Component {
   state = {
     fetchedChildData: false,
     month: moment().month() + 1,
-    year: moment().year()
+    year: moment().year(),
   };
 
   componentDidMount() {
@@ -44,7 +44,7 @@ class EditChildProfileScreen extends React.Component {
       const { profileId: userId, childId } = match.params;
       axios
         .get(`/api/users/${userId}/children/${childId}`)
-        .then(response => {
+        .then((response) => {
           const child = response.data;
           child.date = new Date(child.birthdate).getDate();
           child.year = new Date(child.birthdate).getFullYear();
@@ -52,14 +52,17 @@ class EditChildProfileScreen extends React.Component {
           delete child.birthdate;
           this.setState({ fetchedChildData: true, ...child });
         })
-        .catch(error => {
+        .catch((error) => {
           Log.error(error);
           this.setState({
             fetchedChildData: true,
             child_id: childId,
             image: { path: "" },
             background: "",
+            isAccount: false,
             given_name: "",
+            username: "",
+            password:"",
             family_name: "",
             date: 1,
             year: 2001,
@@ -67,7 +70,7 @@ class EditChildProfileScreen extends React.Component {
             gender: "unspecified",
             allergies: "",
             other_info: "",
-            special_needs: ""
+            special_needs: "",
           });
         });
     }
@@ -77,13 +80,13 @@ class EditChildProfileScreen extends React.Component {
     document.removeEventListener("message", this.handleMessage, false);
   }
 
-  handleMessage = event => {
+  handleMessage = (event) => {
     const data = JSON.parse(event.data);
     if (data.action === "fileUpload") {
       const image = `data:image/png;base64, ${data.value}`;
       this.setState({
         image: { path: image },
-        file: dataURLtoFile(image, "photo.png")
+        file: dataURLtoFile(image, "photo.png"),
       });
     }
   };
@@ -93,7 +96,7 @@ class EditChildProfileScreen extends React.Component {
     history.goBack();
   };
 
-  handleChange = event => {
+  handleChange = (event) => {
     const { name } = event.target;
     const { value } = event.target;
     this.setState({ [name]: value });
@@ -102,6 +105,7 @@ class EditChildProfileScreen extends React.Component {
   validate = () => {
     const { language } = this.props;
     const texts = Texts[language].editChildProfileScreen;
+    console.log(texts)
     const formLength = this.formEl.length;
     if (this.formEl.checkValidity() === false) {
       for (let i = 0; i < formLength; i += 1) {
@@ -129,7 +133,7 @@ class EditChildProfileScreen extends React.Component {
     return true;
   };
 
-  handleAdd = event => {
+  handleAdd = (event) => {
     const { history } = this.props;
     const { pathname } = history.location;
     event.preventDefault();
@@ -137,13 +141,13 @@ class EditChildProfileScreen extends React.Component {
       pathname: `${pathname}/additional`,
       state: {
         ...this.state,
-        editChild: true
-      }
+        editChild: true,
+      },
     });
     return false;
   };
 
-  handleColorChange = color => {
+  handleColorChange = (color) => {
     this.setState({ background: color.hex });
   };
 
@@ -157,46 +161,53 @@ class EditChildProfileScreen extends React.Component {
       file,
       family_name,
       given_name,
+      username,
+      password,
       background,
+      isAccount,
       other_info,
       gender,
       special_needs,
-      allergies
+      allergies,
     } = this.state;
     const bodyFormData = new FormData();
     const birthdate = moment().set({
       year,
       month,
-      date
+      date,
     });
     if (file !== undefined) {
       bodyFormData.append("photo", file);
     }
     bodyFormData.append("given_name", given_name);
+    bodyFormData.append("username", username);
+    bodyFormData.append("password", password);
     bodyFormData.append("family_name", family_name);
     bodyFormData.append("gender", gender);
     bodyFormData.append("background", background);
+    bodyFormData.append("isAccount", isAccount);
     bodyFormData.append("other_info", other_info);
     bodyFormData.append("special_needs", special_needs);
     bodyFormData.append("allergies", allergies);
     bodyFormData.append("birthdate", birthdate);
+    console.log(bodyFormData);
     axios
       .patch(`/api/users/${userId}/children/${childId}`, bodyFormData, {
         headers: {
-          "Content-Type": "multipart/form-data"
-        }
+          "Content-Type": "multipart/form-data",
+        },
       })
-      .then(response => {
+      .then((response) => {
         Log.info(response);
         history.goBack();
       })
-      .catch(error => {
+      .catch((error) => {
         Log.error(error);
         history.goBack();
       });
   };
 
-  handleSave = event => {
+  handleSave = (event) => {
     event.preventDefault();
     if (this.validate()) {
       this.submitChanges();
@@ -204,11 +215,11 @@ class EditChildProfileScreen extends React.Component {
     this.setState({ formIsValidated: true });
   };
 
-  handleImageChange = event => {
+  handleImageChange = (event) => {
     if (event.target.files && event.target.files[0]) {
       const reader = new FileReader();
       const file = event.target.files[0];
-      reader.onload = e => {
+      reader.onload = (e) => {
         this.setState({ image: { path: e.target.result }, file });
       };
       reader.readAsDataURL(event.target.files[0]);
@@ -233,7 +244,10 @@ class EditChildProfileScreen extends React.Component {
       image,
       given_name,
       family_name,
-      background
+      background,
+      username,
+      password,
+      isAccount
     } = this.state;
     const texts = Texts[language].editChildProfileScreen;
     const formClass = [];
@@ -243,10 +257,10 @@ class EditChildProfileScreen extends React.Component {
           .month(month - 1)
           .year(year)
           .daysInMonth()
-      ).keys()
-    ].map(x => x + 1);
-    const months = [...Array(12).keys()].map(x => x + 1);
-    const years = [...Array(18).keys()].map(x => x + (moment().year() - 17));
+      ).keys(),
+    ].map((x) => x + 1);
+    const months = [...Array(12).keys()].map((x) => x + 1);
+    const years = [...Array(18).keys()].map((x) => x + (moment().year() - 17));
     if (formIsValidated) {
       formClass.push("was-validated");
     }
@@ -287,7 +301,7 @@ class EditChildProfileScreen extends React.Component {
         </div>
         <div id="editChildProfileInfoContainer" className="horizontalCenter">
           <form
-            ref={form => {
+            ref={(form) => {
               this.formEl = form;
             }}
             onSubmit={this.handleSave}
@@ -329,7 +343,7 @@ class EditChildProfileScreen extends React.Component {
                 <div className="fullInput editChildProfileInputField center">
                   <label htmlFor="date">{texts.date}</label>
                   <select value={date} onChange={this.handleChange} name="date">
-                    {dates.map(d => (
+                    {dates.map((d) => (
                       <option key={d} value={d}>
                         {d}
                       </option>
@@ -345,7 +359,7 @@ class EditChildProfileScreen extends React.Component {
                     onChange={this.handleChange}
                     name="month"
                   >
-                    {months.map(m => (
+                    {months.map((m) => (
                       <option key={m} value={m}>
                         {m}
                       </option>
@@ -357,7 +371,7 @@ class EditChildProfileScreen extends React.Component {
                 <div className="fullInput editChildProfileInputField center">
                   <label htmlFor="year">{texts.year}</label>
                   <select value={year} onChange={this.handleChange} name="year">
-                    {years.map(y => (
+                    {years.map((y) => (
                       <option key={y} value={y}>
                         {y}
                       </option>
@@ -442,7 +456,37 @@ class EditChildProfileScreen extends React.Component {
                   color={background}
                   onChange={this.handleColorChange}
                 />
+                <span className="invalid-feedback" id="family_nameErr" />
               </div>
+            </div>
+            <div className="row no-gutters">
+              <div className="col-5-10">
+                <div className="fullInput editChildProfileInputField center">
+                  <label htmlFor="surname">{texts.username}</label>
+                  <input
+                    type="text"
+                    name="username"
+                    className="form-control"
+                    onChange={this.handleChange}
+                    value={username}
+                  />
+                </div>
+              </div>
+              {isAccount ?(
+                <div className="col-5-10">
+                <div className="fullInput editChildProfileInputField center">
+                  <label htmlFor="surname">{texts.password}</label>
+                  <input
+                    type="password"
+                    name="password"
+                    className="form-control"
+                    onChange={this.handleChange}
+                    value={password}
+                  />
+                </div>
+              </div>
+              ):(<div></div>)
+            }
             </div>
           </form>
         </div>
@@ -458,5 +502,5 @@ export default withLanguage(EditChildProfileScreen);
 EditChildProfileScreen.propTypes = {
   language: PropTypes.string,
   history: PropTypes.object,
-  match: PropTypes.object
+  match: PropTypes.object,
 };

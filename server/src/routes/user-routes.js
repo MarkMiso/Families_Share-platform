@@ -900,7 +900,7 @@ router.get('/:id/children', (req, res, next) => {
 router.post('/:id/children', childProfileUpload.single('photo'), async (req, res, next) => {
   if (req.user_id !== req.params.id) { return res.status(401).send('Unauthorized') }
   const {
-    birthdate, given_name, family_name, gender, allergies, other_info, special_needs, background, image: imagePath
+    birthdate, given_name, isAccount, username, password, family_name, gender, allergies, other_info, special_needs, background, image: imagePath
   } = req.body
   const { file } = req
   if (!(birthdate && given_name && family_name && gender && background)) {
@@ -910,6 +910,9 @@ router.post('/:id/children', childProfileUpload.single('photo'), async (req, res
   const child = {
     birthdate,
     given_name,
+    username,
+    password,
+    isAccount,
     family_name,
     gender,
     allergies,
