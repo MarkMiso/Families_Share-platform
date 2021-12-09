@@ -11,6 +11,9 @@ const resources = {
       "profile": "Profile",
       "settings": "Settings",
       "logout": "Log Out",
+      "home": "Home",
+      "dashboard": "Dashboard",
+      "calendar": "Calendar",
       "app description": "A "
     }
   },
@@ -20,6 +23,9 @@ const resources = {
       "profile": "Profilo",
       "settings": "Impostazioni",
       "logout": "Esci",
+      "home": "Casa",
+      "dashboard": "Pannello",
+      "calendar": "Calendario",
       "app description": "Il progetto Families_Share sta sviluppando una piattaforma volta a favorire la diffusione di reti sociali e la sensibilizzazione nell'ambito della cura all'infanzia e dell'equilibrio vita-lavoro"
     }
   }

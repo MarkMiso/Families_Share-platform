@@ -9,7 +9,7 @@ function classNames(...classes) {
 }
 
 function SelectLanguage() {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
 
   return (
     <Menu as="div" className="ml-3 relative">

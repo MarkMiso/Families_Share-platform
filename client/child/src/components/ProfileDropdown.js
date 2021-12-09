@@ -1,7 +1,9 @@
 import React from "react";
 import { Fragment } from 'react';
+import { Link, useNavigate } from "react-router-dom";
 import { Menu, Transition } from '@headlessui/react';
 import { useTranslation } from 'react-i18next';
+import { useAuth } from './AuthProvider';
 
 // TODO: business logic
 
@@ -10,7 +12,9 @@ function classNames(...classes) {
 }
 
 function ProfileDropdown() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
+  let auth = useAuth();
+  let navigate = useNavigate();
 
   return (
     <Menu as="div" className="ml-3 relative">
@@ -36,32 +40,27 @@ function ProfileDropdown() {
       <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg p-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
         <Menu.Item>
           {({ active }) => (
-            <a
-              href="#"
-              className={classNames(active ? 'bg-gray-100' : '', 'rounded-md block px-4 py-2 text-sm text-gray-700')}
-            >
+            <Link to="#" className={classNames(active ? 'bg-gray-100' : '', 'rounded-md block px-4 py-2 text-sm text-gray-700')}>
               {t('profile')}
-            </a>
+            </Link>
           )}
         </Menu.Item>
         <Menu.Item>
           {({ active }) => (
-            <a
-              href="#"
-              className={classNames(active ? 'bg-gray-100' : '', 'rounded-md mt-1 block px-4 py-2 text-sm text-gray-700')}
-            >
+            <Link to="#" className={classNames(active ? 'bg-gray-100' : '', 'rounded-md mt-1 block px-4 py-2 text-sm text-gray-700')}>
               {t('settings')}
-            </a>
+            </Link>
           )}
         </Menu.Item>
         <Menu.Item>
           {({ active }) => (
-            <a
-              href="#"
-              className={classNames(active ? 'bg-gray-100' : '', 'rounded-md mt-1 block px-4 py-2 text-sm text-gray-700')}
-            >
-              {t('logout')}
-            </a>
+            <div className={classNames(active ? 'bg-gray-100' : '', 'rounded-md')}>
+              <button className="block px-4 py-2 text-sm text-gray-700 w-full text-left"
+                onClick={auth.signout(() => navigate('/'))}
+              >
+                {t('logout')}
+              </button>
+            </div>
           )}
         </Menu.Item>
       </Menu.Items>

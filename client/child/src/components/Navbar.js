@@ -1,8 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";    // will need for login
-import PropTypes from "prop-types";
-import ProfileDropdown from "./ProfileDropdown";  // not actually needed
-import Notifications from "./Notifications"   // not actually needed
+import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import ProfileDropdown from "./ProfileDropdown";
+import Notifications from "./Notifications"
+import { useAuth } from "./AuthProvider";
 
 import { Disclosure } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
@@ -12,7 +13,31 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-function Navbar({ navigation }) {
+const userNav = [
+  { name: 'dashboard', href: '#', current: true },
+  { name: 'calendar', href: '#', current: false }
+]
+
+const generalNav = [
+  { name: 'home', href: '#', current: true }
+]
+
+function Navbar() {
+  const { t } = useTranslation();
+  let auth = useAuth();
+  let navigation = generalNav;
+  let circles = (<></>)
+
+  if (auth.user) {
+    navigation = userNav;
+    circles = (
+      <>
+        <Notifications />
+        <ProfileDropdown />
+      </>
+    )
+  }
+
   return (
     <Disclosure as="nav" className="bg-white shadow-lg">
       {({ open }) => (
@@ -39,25 +64,24 @@ function Navbar({ navigation }) {
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex items-center h-full space-x-4">
                     {navigation.map((item) => (
-                      <a
+                      <Link
                         key={item.name}
-                        href={item.href}
+                        to={item.href}
                         className={classNames(
                           item.current ? 'text-black border-b-2 border-yellow-500' : 'text-gray-500 hover:text-black',
                           'h-full px-3 py-5 font-semibold'
                         )}
                         aria-current={item.current ? 'page' : undefined}
                       >
-                        {item.name}
-                      </a>
+                        {t(item.name)}
+                      </Link>
                     ))}
                   </div>
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <SelectLanguage />
-                <Notifications />
-                <ProfileDropdown />
+                { circles }
               </div>
             </div>
           </div>
@@ -75,7 +99,7 @@ function Navbar({ navigation }) {
                   )}
                   aria-current={item.current ? 'page' : undefined}
                 >
-                  {item.name}
+                  {t(item.name)}
                 </Disclosure.Button>
               ))}
             </div>
@@ -85,9 +109,5 @@ function Navbar({ navigation }) {
     </Disclosure>
   );
 }
-
-Navbar.propTypes = {
-  navigation: PropTypes.array
-};
 
 export default Navbar;
