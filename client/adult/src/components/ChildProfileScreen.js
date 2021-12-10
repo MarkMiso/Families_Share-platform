@@ -20,6 +20,8 @@ const getChild = (userId, childId) => {
         image: { path: "" },
         background: "",
         given_name: "",
+        username:"",
+        password:"",
         family_name: "",
         birthdate: new Date(),
         gender: "unspecified",

@@ -3680,7 +3680,9 @@ const it = {
     year: "Anno",
     file: "Scegli file",
     unspecified: "Non specificato",
-    requiredErr: "Perfavore compila questo campo."
+    requiredErr: "Perfavore compila questo campo.",
+    username: "Nome Utente bambino",
+    password: "Password account bambino"
   },
   createChildScreen: {
     backNavTitle: "Aggiungi un/a bambino/a",
