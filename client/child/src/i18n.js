@@ -9,6 +9,7 @@ const resources = {
     translation: {
       "username": "Username",
       "password": "Password",
+      "email": "Email",
       "login": "Log In",
       "profile": "Profile",
       "settings": "Settings",
@@ -25,6 +26,7 @@ const resources = {
     translation: {
       "username": "Nome Utente",
       "password": "Password",
+      "email": "Email",
       "login": "Accedi",
       "profile": "Profilo",
       "settings": "Impostazioni",

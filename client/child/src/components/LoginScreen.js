@@ -12,13 +12,12 @@ export function LoginScreen() {
     event.preventDefault();
 
     let formData = new FormData(event.currentTarget);
-    let username = formData.get("username");
+    let email = formData.get("email");
+    let password = formData.get("password");
 
-    console.log(auth.user)
-
-    auth.signin(username, () => { 
+    auth.signin(email, password, () => { 
       navigate('/myfamilyshare')
-    })();
+    });
   }
 
   return (
@@ -35,9 +34,9 @@ export function LoginScreen() {
       <form onSubmit={handleSubmit} className="mt-12 w-full p-5 shadow-lg rounded-md">
         <div>
           <label className="block font-semibold text-gray-500">
-            {t('username')}
+            {t('email')}
           </label>
-          <input name="username" type="text" className="transition ease-in-out duration-300 mt-1 appearance-none rounded-md w-full px-3 py-2 border-2 border-gray-300 font-semibold text-gray-900 focus:outline-none focus:ring-1 focus:border-1 focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm"/>
+          <input name="email" type="email" className="transition ease-in-out duration-300 mt-1 appearance-none rounded-md w-full px-3 py-2 border-2 border-gray-300 font-semibold text-gray-900 focus:outline-none focus:ring-1 focus:border-1 focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm"/>
         </div>
 
         <div className="mt-5">

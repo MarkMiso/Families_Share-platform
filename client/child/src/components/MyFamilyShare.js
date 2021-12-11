@@ -9,7 +9,7 @@ function MyFamilyShare() {
     <div className="MyFamilyShareContainer">
       <Navbar />
       <div>
-        { auth.user }
+        { auth.user.name }
       </div>
     </div>
   )

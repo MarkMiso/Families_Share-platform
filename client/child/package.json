@@ -23,7 +23,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "craco start",
+    "start": "PORT=2000 craco start",
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject"
@@ -46,6 +46,7 @@
       "last 1 safari version"
     ]
   },
+  "proxy": "http://127.0.0.1:4000/",
   "devDependencies": {
     "autoprefixer": "^9.8.8",
     "postcss": "^7.0.39",

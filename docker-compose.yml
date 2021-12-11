@@ -6,7 +6,7 @@ services:
     tty: true
     build: ./client/child
     ports:
-      - "2000:3000"
+      - "2000:2000"
     links:
       - server
     depends_on:

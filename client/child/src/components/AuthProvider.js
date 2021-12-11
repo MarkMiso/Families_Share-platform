@@ -1,25 +1,30 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
+import AuthService from "../services/AuthService"
 
 let AuthContext = React.createContext();
 
 function AuthProvider({ children }) {
-  let [user, setUser] = React.useState(null);
+  let storedUser = JSON.parse(localStorage.getItem("user"));
+  let [user, setUser] = React.useState(storedUser);
 
-  let signin = (newUser, callback) => {
-    // TODO: actual login
-    return () => {
-      setUser(newUser);
+  let signin = (email, password, callback) => {
+    const deviceToken = localStorage.getItem("deviceToken");
+    const origin = window.isNative ? "native" : "web";
+
+    return AuthService.signin(email, password, origin, deviceToken, (user) => {
+      setUser(user);
       callback();
-    }
-  }
+    });
+  };
 
   let signout = (callback) => {
     return () => {
+      localStorage.removeItem("user")
       setUser(null);
       callback();
     }
-  }
+  };
 
   let value = {user, signin, signout};
 
@@ -27,7 +32,7 @@ function AuthProvider({ children }) {
     <AuthContext.Provider value={value}>
       {children}
     </AuthContext.Provider>
-  )
+  );
 }
 
 function useAuth() {
