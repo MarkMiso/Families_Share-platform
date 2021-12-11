@@ -56,7 +56,7 @@ function ProfileDropdown() {
           {({ active }) => (
             <div className={classNames(active ? 'bg-gray-100' : '', 'rounded-md')}>
               <button className="block px-4 py-2 text-sm text-gray-700 w-full text-left"
-                onClick={auth.signout(() => navigate('/'))}
+                onClick={() => auth.signout(() => navigate('/'))}
               >
                 {t('logout')}
               </button>

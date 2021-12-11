@@ -12,18 +12,18 @@ function AuthProvider({ children }) {
     const deviceToken = localStorage.getItem("deviceToken");
     const origin = window.isNative ? "native" : "web";
 
+    // TODO: actual error handling
     return AuthService.signin(email, password, origin, deviceToken, (user) => {
       setUser(user);
       callback();
-    });
+    }).catch(error => console.log(error));
   };
 
   let signout = (callback) => {
-    return () => {
-      localStorage.removeItem("user")
+    return AuthService.signout(() => {
       setUser(null);
       callback();
-    }
+    });
   };
 
   let value = {user, signin, signout};
