@@ -19,7 +19,10 @@ const resources = {
       "dashboard": "Dashboard",
       "calendar": "Calendar",
       "app description": "The Families_Share project is developing a social networking and awareness-raising platform dedicated to encouraging childcare and work/life balance",
-      "signin prompt": "Sign in to your account"
+      "signin prompt": "Sign in to your account",
+      "open group": "Open Group: Anybody can join",
+      "closed group": "Closed Group: Only on invite",
+      "open": "Open"
     }
   },
   it: {
@@ -36,7 +39,10 @@ const resources = {
       "dashboard": "Pannello",
       "calendar": "Calendario",
       "app description": "Il progetto Families_Share sta sviluppando una piattaforma volta a favorire la diffusione di reti sociali e la sensibilizzazione nell'ambito della cura all'infanzia e dell'equilibrio vita-lavoro",
-      "signin prompt": "Sign in to your account"
+      "signin prompt": "Sign in to your account",
+      "open group": "Gruppo Aperto: Chiunque può unirsi",
+      "closed group": "Gruppo Chiuso: Solo su invito",
+      "open": "Apri"
     }
   }
 };

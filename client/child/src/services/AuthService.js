@@ -1,5 +1,4 @@
 import axios from "axios";
-import { use } from "i18next";
 
 function signin(email, password, origin, deviceToken, callback) {
   const language = "it"; // TODO: read from local storage

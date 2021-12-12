@@ -1,10 +1,18 @@
 import React from "react";
 import Navbar from "./Navbar";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
+import { useAuth } from './AuthProvider';
 
 function LandingScreen() {
   const { t } = useTranslation();
+  let auth = useAuth();
+
+  if (auth.user) {
+    return (
+      <Navigate to="/myfamilyshare" />
+    )
+  }
 
   return (
     <div className="landingScreenContainer">
