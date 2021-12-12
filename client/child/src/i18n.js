@@ -22,7 +22,7 @@ const resources = {
       "signin prompt": "Sign in to your account",
       "open group": "Open Group: Anybody can join",
       "closed group": "Closed Group: Only on invite",
-      "open": "Open"
+      "join": "Join"
     }
   },
   it: {
@@ -42,7 +42,7 @@ const resources = {
       "signin prompt": "Sign in to your account",
       "open group": "Gruppo Aperto: Chiunque può unirsi",
       "closed group": "Gruppo Chiuso: Solo su invito",
-      "open": "Apri"
+      "join": "Unisciti"
     }
   }
 };

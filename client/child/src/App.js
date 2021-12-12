@@ -44,7 +44,7 @@ function App() {
       <header className="App-header">
       </header>
       <AuthProvider>
-        <body className="h-screen">
+        <body className="h-screen bg-gray-100">
           <Routes>
             <Route exact path="/" element={<LandingScreen />} />
             <Route path="/login" element={<LoginScreen />} />
