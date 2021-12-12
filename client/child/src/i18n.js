@@ -22,7 +22,9 @@ const resources = {
       "signin prompt": "Sign in to your account",
       "open group": "Open Group: Anybody can join",
       "closed group": "Closed Group: Only on invite",
-      "join": "Join"
+      "join": "Join",
+      "your groups": "Your Groups",
+      "no results": "No Resoults"
     }
   },
   it: {
@@ -39,10 +41,12 @@ const resources = {
       "dashboard": "Pannello",
       "calendar": "Calendario",
       "app description": "Il progetto Families_Share sta sviluppando una piattaforma volta a favorire la diffusione di reti sociali e la sensibilizzazione nell'ambito della cura all'infanzia e dell'equilibrio vita-lavoro",
-      "signin prompt": "Sign in to your account",
+      "signin prompt": "Entra ne tuo account",
       "open group": "Gruppo Aperto: Chiunque può unirsi",
       "closed group": "Gruppo Chiuso: Solo su invito",
-      "join": "Unisciti"
+      "join": "Unisciti",
+      "your groups": "I tuoi Gruppi",
+      "no results": "Nessun Risultato"
     }
   }
 };

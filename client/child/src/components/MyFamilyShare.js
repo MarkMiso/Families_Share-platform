@@ -3,6 +3,7 @@ import { useAuth } from "./AuthProvider";
 import Navbar from "./Navbar";
 import axios from "axios";
 import GroupList from "./GroupList";
+import { useTranslation } from "react-i18next";
 
 const fetchGroups = (userId) => {
   return axios
@@ -19,6 +20,7 @@ const fetchGroups = (userId) => {
 function MyFamilyShare() {
   let auth = useAuth();
   let [groups, setGroups] = useState(null);
+  let { t } = useTranslation();
 
   useEffect(() => {
     async function setData() {
@@ -34,7 +36,9 @@ function MyFamilyShare() {
       <Navbar />
       <div className="max-w-7xl mx-auto px-2 flex justify-center sm:px-6 lg:px-8 ">
         <div className="w-full mt-5 text-center">
-          <p className="p-5 text-5xl text-transparent bg-clip-text font-black bg-gradient-to-r from-yellow-500 to-red-500">Your groups</p>
+          <p className="p-5 text-5xl text-transparent bg-clip-text font-black bg-gradient-to-r from-yellow-500 to-red-500">
+            {t('your groups')}
+          </p>
           {groups ? (
             <GroupList groupIDs={groups.map((item) => {return item.group_id})} isMember={true}/>
           ) : (
