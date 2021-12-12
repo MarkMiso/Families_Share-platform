@@ -24,7 +24,8 @@ const resources = {
       "closed group": "Closed Group: Only on invite",
       "join": "Join",
       "your groups": "Your Groups",
-      "no results": "No Resoults"
+      "no results": "No Resoults",
+      "your activities": "Your Activities"
     }
   },
   it: {
@@ -46,7 +47,8 @@ const resources = {
       "closed group": "Gruppo Chiuso: Solo su invito",
       "join": "Unisciti",
       "your groups": "I tuoi Gruppi",
-      "no results": "Nessun Risultato"
+      "no results": "Nessun Risultato",
+      "your activities": "Le tue Attività"
     }
   }
 };

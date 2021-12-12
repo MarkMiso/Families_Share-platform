@@ -55,7 +55,6 @@ function GroupBlock({ groupId, isMember }) {
     setData();
   },[groupId]);
 
-  // TODO: loading animation
   return (
     <div className = "cursor-pointer bg-white flex  mb-5 mx-5 pt-5 font-semibold"
       onClick={() => {
