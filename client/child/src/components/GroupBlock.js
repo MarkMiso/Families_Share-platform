@@ -55,6 +55,8 @@ function GroupBlock({ groupId, isMember }) {
     setData();
   },[groupId]);
 
+  isMember = true;
+
   return (
     <div className = "cursor-pointer bg-white flex  mb-5 mx-5 pt-5 font-semibold"
       onClick={() => {
@@ -74,15 +76,16 @@ function GroupBlock({ groupId, isMember }) {
       <div className="divide-y-2 pl-5 text-justify w-3/5 sm:w-full">
         <div className="pb-2">
           {group ? (
-            <p  className={classNames(
-              isMember ? "text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-red-500 font-black text-3xl" : "text-xl", "inline-block")}>{group.name}</p>
+            <p  className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-red-500 font-black text-2xl inline-block leading-tight">
+              {group.name}
+            </p>
           ) : (
             <p className="text-gray-300 text-sm animate-pulse">title</p>
           )}
 
           {group ? (
             <p className={classNames(
-              isMember || showFull ? "" : "truncate", "text-gray-400 text-sm"
+              isMember || showFull ? "" : "truncate", "mt-1 text-gray-400 text-sm"
             )}>{group.description}</p>
           ) : (
             <p className="text-gray-300 text-sm animate-pulse">description</p>
@@ -105,10 +108,7 @@ function GroupBlock({ groupId, isMember }) {
               </div>
             ) : (
               <div>
-                <button className="animate-pulse font-semibold text-white mt-2 rounded-md py-1 px-8 bg-gray-200 w-full sm:w-40"
-                  onClick={() => {
-                    // TODO: join button
-                  }}>
+                <button className="animate-pulse font-semibold text-white mt-2 rounded-md py-1 px-8 bg-gray-200 w-full sm:w-40">
                   Join Button
                 </button>
                 <p className="font-medium text-gray-300 text-xs mt-2 animate-pulse">group settings</p>

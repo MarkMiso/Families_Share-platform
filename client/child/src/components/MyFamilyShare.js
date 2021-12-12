@@ -53,10 +53,10 @@ function MyFamilyShare() {
   return (
     <div className="MyFamilyShareContainer">
       <Navbar />
-      <div className="max-w-7xl mx-auto px-2 flex justify-center sm:px-6 lg:px-8 ">
+      <div className="max-w-3xl mx-auto px-2 flex justify-center sm:px-6 lg:px-8 ">
         <div className="w-full text-center">
           <div>
-            <p className="p-8 text-5xl text-transparent bg-clip-text font-black bg-gradient-to-r from-yellow-500 to-red-500">
+            <p className="p-8 text-4xl text-transparent bg-clip-text font-black bg-gradient-to-r from-yellow-500 to-red-500">
               {t('your groups')}
             </p>
             {groups ? (
@@ -68,7 +68,7 @@ function MyFamilyShare() {
             )}
           </div>
           <div>
-            <p className="p-8 text-5xl text-transparent bg-clip-text font-black bg-gradient-to-r from-red-500 to-pink-500">
+            <p className="p-8 text-4xl text-transparent bg-clip-text font-black bg-gradient-to-r from-red-500 to-pink-500">
               {t('your activities')}
             </p>
             {events ? (
