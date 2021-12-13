@@ -4,32 +4,22 @@ import { useTranslation } from "react-i18next";
 import ProfileDropdown from "./ProfileDropdown";
 import Notifications from "./Notifications"
 import { useAuth } from "./AuthProvider";
+import PropTypes from "prop-types";
 
-import { Disclosure } from '@headlessui/react';
-import { MenuIcon, XIcon } from '@heroicons/react/outline';
+import { Disclosure } from "@headlessui/react";
+import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import SelectLanguage from "./SelectLanguage";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-const userNav = [
-  { name: 'dashboard', href: '#', current: true },
-  { name: 'calendar', href: '#', current: false }
-]
-
-const generalNav = [
-  { name: 'home', href: '#', current: true }
-]
-
-function Navbar() {
+function Navbar({ navigation }) {
   const { t } = useTranslation();
   let auth = useAuth();
-  let navigation = generalNav;
   let circles = (<></>)
 
   if (auth.user) {
-    navigation = userNav;
     circles = (
       <>
         <Notifications />
@@ -108,6 +98,10 @@ function Navbar() {
       )}
     </Disclosure>
   );
+}
+
+Navbar.propTypes = {
+  navigation: PropTypes.array
 }
 
 export default Navbar;

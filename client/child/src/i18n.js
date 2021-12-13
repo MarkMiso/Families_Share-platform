@@ -25,7 +25,9 @@ const resources = {
       "join": "Join",
       "your groups": "Your Groups",
       "no results": "No Resoults",
-      "your activities": "Your Activities"
+      "your activities": "Your Activities",
+      "search": "Type Here...",
+      "search groups": "Search a Group"
     }
   },
   it: {
@@ -48,7 +50,9 @@ const resources = {
       "join": "Unisciti",
       "your groups": "I tuoi Gruppi",
       "no results": "Nessun Risultato",
-      "your activities": "Le tue Attività"
+      "your activities": "Le tue Attività",
+      "search": "Scrivi Qui...",
+      "search groups": "Cerca un Gruppo"
     }
   }
 };

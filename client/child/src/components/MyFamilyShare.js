@@ -30,6 +30,13 @@ const fetchEvents = userId => {
     });
 };
 
+const userNav = [
+  { name: 'dashboard', href: '/myfamilyshare', current: true },
+  { name: 'groups', href: '/myfamilyshare/groups', current: false },
+  { name: 'activities', href: '/myfamilyshare/groups', current: false },
+  { name: 'calendar', href: '/myfamilyshare/calendar', current: false }
+]
+
 function MyFamilyShare() {
   let auth = useAuth();
   let [groups, setGroups] = useState(null);
@@ -41,7 +48,6 @@ function MyFamilyShare() {
       let groupRes = await fetchGroups(auth.user.id);
       let eventsRes = await fetchEvents(auth.user.id);
 
-      console.log(eventsRes);
       setGroups(groupRes);
       setEvents(eventsRes);
     }
@@ -52,10 +58,10 @@ function MyFamilyShare() {
   // TODO: loading animation
   return (
     <div className="MyFamilyShareContainer">
-      <Navbar />
+      <Navbar navigation={userNav}/>
       <div className="max-w-3xl mx-auto px-2 flex justify-center sm:px-6 lg:px-8 ">
         <div className="w-full text-center">
-          <div>
+          <div className="GroupListContainer">
             <p className="p-8 text-4xl text-transparent bg-clip-text font-black bg-gradient-to-r from-yellow-500 to-red-500">
               {t('your groups')}
             </p>
@@ -67,7 +73,7 @@ function MyFamilyShare() {
               </p>
             )}
           </div>
-          <div>
+          <div className="ActivitiesListContainer">
             <p className="p-8 text-4xl text-transparent bg-clip-text font-black bg-gradient-to-r from-red-500 to-pink-500">
               {t('your activities')}
             </p>
@@ -86,3 +92,4 @@ function MyFamilyShare() {
 }
 
 export default MyFamilyShare;
+export { fetchGroups, fetchEvents};

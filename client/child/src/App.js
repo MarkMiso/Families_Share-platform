@@ -22,6 +22,11 @@ const MyFamilyShare = Loadable({
   loading: () => Loading
 })
 
+const GroupsPage = Loadable({
+  loader: () => import("./components/GroupsPage"),
+  loading: () => Loading
+})
+
 axios.interceptors.request.use(
   config => {
     let userToken = "";
@@ -48,11 +53,8 @@ function App() {
           <Routes>
             <Route exact path="/" element={<LandingScreen />} />
             <Route path="/login" element={<LoginScreen />} />
-            <Route path="/myfamilyshare" element={
-              <RequireAuth>
-                <MyFamilyShare />
-              </RequireAuth>
-            } />
+            <Route path="/myfamilyshare" element={<RequireAuth> <MyFamilyShare /> </RequireAuth>} />
+            <Route path="/myfamilyshare/groups" element={<RequireAuth> <GroupsPage /> </RequireAuth>} />
           </Routes>
         </body>
       </AuthProvider>

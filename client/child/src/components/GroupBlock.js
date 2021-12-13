@@ -55,10 +55,8 @@ function GroupBlock({ groupId, isMember }) {
     setData();
   },[groupId]);
 
-  isMember = true;
-
   return (
-    <div className = "cursor-pointer bg-white flex  mb-5 mx-5 pt-5 font-semibold"
+    <div className = "cursor-pointer bg-white flex mb-5 mx-5 pt-5 font-semibold"
       onClick={() => {
         if (isMember) {
           //todo: manda alla schermata del gruppo
@@ -66,7 +64,7 @@ function GroupBlock({ groupId, isMember }) {
           setShowFull(!showFull);
         }
       }}>
-      <div className="overflow-hidden rounded-xl w-2/5 sm:w-40 border-2 border-gray-200">
+      <div className="overflow-hidden rounded-xl w-2/5 sm:w-40 border-2 border-gray-200 shadow-inner">
         {group ? (
           <img src={group.image.thumbnail_path} alt="object-cover"/>
         ) : (
@@ -85,7 +83,7 @@ function GroupBlock({ groupId, isMember }) {
 
           {group ? (
             <p className={classNames(
-              isMember || showFull ? "" : "truncate", "mt-1 text-gray-400 text-sm"
+              isMember || showFull ? "" : "truncate", "mt-1 text-gray-400"
             )}>{group.description}</p>
           ) : (
             <p className="text-gray-300 text-sm animate-pulse">description</p>
