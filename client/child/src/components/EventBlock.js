@@ -8,9 +8,26 @@ function EventBlock({ event }) {
   let endTime = moment(event.end.dateTime).format("HH:mm");
   
   return (
-    <p>
-      {event.summary}: {date} {startTime} - {endTime}
-    </p>
+    <div className="cursor-pointer flex align-middle mb-5 mx-5 pt-5 font-semibold" 
+      onClick={() =>{
+        // TODO: manda alla schermata della attività
+    }}>
+      <div className="flex items-center p-3 rounded-md border-2 border-gray-200 shadow-inner">
+        <p className="text-gray-500">
+          {date}
+        </p>
+      </div>
+      <div className="pl-5 text-left">
+        <p className="text-xl inline-block text-transparent bg-clip-text font-black bg-gradient-to-r from-red-500 to-pink-500">
+          {event.summary}
+        </p>
+        <p className="text-gray-400">
+          {startTime} - {endTime}
+        </p>
+      </div>
+        
+    </div>
+
   )
 }
 
