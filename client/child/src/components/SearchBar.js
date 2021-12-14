@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import PropTypes from "prop-types";
 import { SearchIcon } from "@heroicons/react/outline";
-import GroupList from "../components/GroupList";
+import List from "./List";
 import { useTranslation } from "react-i18next";
 
 // TODO: use type and animations
@@ -26,7 +26,7 @@ function SearchBar({type, data }) {
       </div>
       <div className="mt-3">
         {filteredData ? (
-            <GroupList groupIDs={filteredData.map((item) => {return item.group_id})} isMember={false}/>
+            <List data={filteredData.map((item) => {return item.group_id})} blockInfo={{type: "group", isMember: false}}/>
           ) : (
             <p>
               Eh si ma dammi il tempo

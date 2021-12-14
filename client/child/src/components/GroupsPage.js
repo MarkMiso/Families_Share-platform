@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuth } from "./AuthProvider";
 import Navbar from "./Navbar";
 import { fetchGroups } from "./MyFamilyShare";
-import GroupList from "./GroupList";
+import List from "./List";
 import { useTranslation } from "react-i18next";
 import SearchBar from "./SearchBar";
 import axios from "axios";
@@ -49,12 +49,12 @@ function GroupsPage() {
       <Navbar navigation={userNav}/>
       <div className="max-w-3xl mx-auto px-2 flex justify-center sm:px-6 lg:px-8">
         <div className="w-full text-center">
-          <div name="GroupListContainer">
+          <div name="ListContainer">
             <p className="p-8 text-4xl text-transparent bg-clip-text font-black bg-gradient-to-r from-yellow-500 to-red-500">
               {t('your groups')}
             </p>
             {groups ? (
-              <GroupList groupIDs={groups.map((item) => {return item.group_id})} isMember={true}/>
+              <List data={groups.map((item) => {return item.group_id})} blockInfo={{type: "group", isMember: true}}/>
             ) : (
               <p>
                 Eh si ma dammi il tempo
