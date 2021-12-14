@@ -6,6 +6,7 @@ import List from "./List";
 import { useTranslation } from "react-i18next";
 import SearchBar from "./SearchBar";
 import axios from "axios";
+import LoadingSpinner from "./LoadingSpinner";
 
 const userNav = [
   { name: 'dashboard', href: '/myfamilyshare', current: false },
@@ -56,9 +57,7 @@ function GroupsPage() {
             {groups ? (
               <List data={groups.map((item) => {return item.group_id})} blockInfo={{type: "group", isMember: true}}/>
             ) : (
-              <p>
-                Eh si ma dammi il tempo
-              </p>
+              <LoadingSpinner />
             )}
           </div>
           <div name="GroupSearchContainer">
@@ -68,9 +67,7 @@ function GroupsPage() {
             {search ? (
               <SearchBar type={"group"} data={search} />
             ) : (
-              <p>
-                Eh si ma dammi il tempo
-              </p>
+              <LoadingSpinner />
             )}
             
           </div>

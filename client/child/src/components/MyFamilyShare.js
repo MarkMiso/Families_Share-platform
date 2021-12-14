@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 import axios from "axios";
 import List from "./List";
 import { useTranslation } from "react-i18next";
+import LoadingSpinner from "./LoadingSpinner";
 
 const fetchGroups = (userId) => {
   return axios
@@ -67,9 +68,7 @@ function MyFamilyShare() {
             {groups ? (
               <List data={groups.map((item) => {return item.group_id})} blockInfo={{type: "group", isMember: true}}/>
             ) : (
-              <p>
-                Eh si ma dammi il tempo
-              </p>
+              <LoadingSpinner />
             )}
           </div>
           <div className="ActivitiesListContainer">
@@ -79,9 +78,7 @@ function MyFamilyShare() {
             {events ? (
               <List data={events} blockInfo={{type: "event"}}/>
             ) : (
-              <p>
-                Eh si ma dammi il tempo
-              </p>
+              <LoadingSpinner />
             )}
           </div>
         </div>
