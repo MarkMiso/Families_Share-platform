@@ -37,9 +37,6 @@ function GroupsPage() {
       let groupRes = await fetchGroups(auth.user.id);
       let searchRes = await fetchGroupsByVisibily();
 
-      console.log(searchRes)
-      console.log(groupRes)
-
       setSearch(searchRes);
       setGroups(groupRes);
     }

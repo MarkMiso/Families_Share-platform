@@ -27,7 +27,9 @@ const resources = {
       "no results": "No Resoults",
       "your activities": "Your Activities",
       "search": "Type Here...",
-      "search groups": "Search a Group"
+      "search groups": "Search a Group",
+      "groups": "Groups",
+      "activities": "Activities"
     }
   },
   it: {
@@ -52,7 +54,9 @@ const resources = {
       "no results": "Nessun Risultato",
       "your activities": "Le tue Attività",
       "search": "Scrivi Qui...",
-      "search groups": "Cerca un Gruppo"
+      "search groups": "Cerca un Gruppo",
+      "groups": "Gruppi",
+      "activities": "Attività"
     }
   }
 };
