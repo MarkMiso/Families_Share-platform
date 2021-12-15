@@ -52,12 +52,4 @@ function RequireAuth({ children }) {
   return children;
 }
 
-RequireAuth.propTypes = {
-  children: React.ReactNode
-}
-
-AuthProvider.propTypes = {
-  children: React.ReactNode
-}
-
 export { AuthProvider, RequireAuth, useAuth };
