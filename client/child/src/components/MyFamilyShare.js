@@ -1,34 +1,12 @@
 import React, { useEffect, useState } from "react";
+
+import { fetchGroups, fetchEvents } from "../services/userService";
+
 import { useAuth } from "./AuthProvider";
 import Navbar from "./Navbar";
-import axios from "axios";
 import List from "./List";
 import { useTranslation } from "react-i18next";
 import LoadingSpinner from "./LoadingSpinner";
-
-const fetchGroups = (userId) => {
-  return axios
-    .get(`/api/users/${userId}/groups`)
-    .then(response => {
-      return response.data;
-    })
-    .catch(error => {
-      console.error(error);
-      return [];
-    });
-};
-
-const fetchEvents = userId => {
-  return axios
-    .get(`/api/users/${userId}/events`)
-    .then(response => {
-      return response.data;
-    })
-    .catch(error => {
-      console.error(error);
-      return [];
-    });
-};
 
 const userNav = [
   { name: 'dashboard', href: '/myfamilyshare', current: true },
@@ -88,4 +66,3 @@ function MyFamilyShare() {
 }
 
 export default MyFamilyShare;
-export { fetchGroups, fetchEvents};

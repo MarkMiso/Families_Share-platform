@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+
+import { fetchEvents, fetchGroups } from "../services/userService";
+import { fetchActivites } from "../services/GroupService";
+
 import { useAuth } from "./AuthProvider";
 import Navbar from "./Navbar";
-import { fetchEvents, fetchGroups } from "./MyFamilyShare";
-import { useTranslation } from "react-i18next";
 import List from "./List";
 import LoadingSpinner from "./LoadingSpinner";
 import SearchBar from "./SearchBar";
-import axios from "axios";
+
 
 const userNav = [
   { name: 'dashboard', href: '/myfamilyshare', current: false },
@@ -14,19 +17,6 @@ const userNav = [
   { name: 'activities', href: '/myfamilyshare/activities', current: true },
   { name: 'calendar', href: '/myfamilyshare/calendar', current: false }
 ]
-
-const fetchActivites = (groupId) => {
-  return axios
-    .get(`/api/groups/${groupId}/activities`)
-    .then(response => {
-      return response.data;
-    })
-    .catch(error => {
-      console.error(error);
-      return [];
-    });
-};
-
 
 function ActivitiesPage() {
   let auth = useAuth();

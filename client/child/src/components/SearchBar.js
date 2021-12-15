@@ -1,8 +1,9 @@
 import React, {useState} from "react";
 import PropTypes from "prop-types";
+import { useTranslation } from "react-i18next";
+
 import { SearchIcon } from "@heroicons/react/outline";
 import List from "./List";
-import { useTranslation } from "react-i18next";
 import LoadingSpinner from "./LoadingSpinner";
 
 // TODO: optimize

@@ -1,7 +1,8 @@
 import React from "react";
-import Navbar from "./Navbar";
 import { Link, Navigate } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
+
+import Navbar from "./Navbar";
 import { useAuth } from './AuthProvider';
 
 const generalNav = [

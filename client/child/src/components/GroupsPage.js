@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+
+import { fetchGroups } from "../services/userService";
+import { fetchGroupsAll } from "../services/GroupService";
+
 import { useAuth } from "./AuthProvider";
 import Navbar from "./Navbar";
-import { fetchGroups } from "./MyFamilyShare";
 import List from "./List";
-import { useTranslation } from "react-i18next";
 import SearchBar from "./SearchBar";
-import axios from "axios";
 import LoadingSpinner from "./LoadingSpinner";
+
 
 const userNav = [
   { name: 'dashboard', href: '/myfamilyshare', current: false },
@@ -14,18 +17,6 @@ const userNav = [
   { name: 'activities', href: '/myfamilyshare/activities', current: false },
   { name: 'calendar', href: '/myfamilyshare/calendar', current: false }
 ]
-
-const fetchGroupsByVisibily = () => {
-  return axios
-  .get("/api/groups?searchBy=visibility&visible=true")
-  .then(response => {
-    return response.data;
-  })
-  .catch(error => {
-    console.error(error);
-    return {};
-  });
-}
 
 function GroupsPage() {
   let auth = useAuth();
@@ -36,7 +27,7 @@ function GroupsPage() {
   useEffect(() => {
     async function setData() {
       let groupRes = await fetchGroups(auth.user.id);
-      let searchRes = await fetchGroupsByVisibily();
+      let searchRes = await fetchGroupsAll();
 
       setSearch(searchRes);
       setGroups(groupRes);
@@ -44,8 +35,6 @@ function GroupsPage() {
 
     setData();
   },[auth.user.id]);
-
-
 
   return(
     <div name="GroupsPageContainer">

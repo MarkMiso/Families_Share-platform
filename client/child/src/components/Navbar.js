@@ -1,14 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import ProfileDropdown from "./ProfileDropdown";
-import Notifications from "./Notifications"
-import { useAuth } from "./AuthProvider";
 import PropTypes from "prop-types";
 
 import { Disclosure } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import SelectLanguage from "./SelectLanguage";
+import ProfileDropdown from "./ProfileDropdown";
+import Notifications from "./Notifications"
+import { useAuth } from "./AuthProvider";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')

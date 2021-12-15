@@ -1,8 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { useTranslation } from "react-i18next";
+
 import GroupBlock from "./GroupBlock";
 import EventBlock from "./EventBlock";
-import { useTranslation } from "react-i18next";
 import ActivitiesBlock from "./ActivitiesBlock";
 
 function Block( {item, blockInfo} ) {

@@ -1,4 +1,5 @@
 import React from "react";
+
 import { RefreshIcon } from "@heroicons/react/outline";
 
 function LoadingSpinner() {

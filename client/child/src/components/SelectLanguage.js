@@ -1,8 +1,9 @@
 import React from "react";
 import { Fragment } from 'react'
+import { useTranslation } from 'react-i18next';
+
 import { Menu, Transition } from '@headlessui/react'
 import { TranslateIcon } from '@heroicons/react/outline'
-import { useTranslation } from 'react-i18next';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
