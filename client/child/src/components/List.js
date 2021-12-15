@@ -3,11 +3,12 @@ import PropTypes from "prop-types";
 import GroupBlock from "./GroupBlock";
 import EventBlock from "./EventBlock";
 import { useTranslation } from "react-i18next";
+import ActivitiesBlock from "./ActivitiesBlock";
 
-function Block( {item, blockInfo}) {
+function Block( {item, blockInfo} ) {
   if (blockInfo.type === "group") {
     return (
-      <GroupBlock groupId={item} isMember={blockInfo.isMember}/>
+      <GroupBlock groupId={item.group_id} isMember={blockInfo.isMember}/>
     )
   }
 
@@ -16,16 +17,26 @@ function Block( {item, blockInfo}) {
       <EventBlock event={item}/>
     )
   }
+
+  if (blockInfo.type === "activity") {
+    return (
+      <ActivitiesBlock activity={item}/>
+    )
+  }
+
+  return (
+    <></>
+  )
 }
 
-function List({ data, blockInfo}) {
+function List({ data, blockInfo }) {
   let { t } = useTranslation();
 
   if (blockInfo.type === "group") {
   }
   return (
     <div className="bg-white rounded-xl grid grid-cols-1 divide-y-2 divide-gray-200 shadow-md overflow-hidden">
-      {data.length > 0 ? (data.map((item) => (<Block item={item} blockInfo={blockInfo} />))) : (
+      {data.length > 0 ? (data.map((item) => (<Block item={item} blockInfo={blockInfo}/>))) : (
         <p className="p-5 font-semibold text-gray-400">
           {t('no results')}
         </p>

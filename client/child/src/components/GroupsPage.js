@@ -45,6 +45,8 @@ function GroupsPage() {
     setData();
   },[auth.user.id]);
 
+
+
   return(
     <div name="GroupsPageContainer">
       <Navbar navigation={userNav}/>
@@ -55,7 +57,7 @@ function GroupsPage() {
               {t('your groups')}
             </p>
             {groups ? (
-              <List data={groups.map((item) => {return item.group_id})} blockInfo={{type: "group", isMember: true}}/>
+              <List data={groups} blockInfo={{type: "group", isMember: true}}/>
             ) : (
               <LoadingSpinner />
             )}
@@ -65,7 +67,7 @@ function GroupsPage() {
               {t('search groups')}
             </p>
             {search ? (
-              <SearchBar type={"group"} data={search} />
+              <SearchBar dataInfo={{type: "group", isMember: false}} data={search} />
             ) : (
               <LoadingSpinner />
             )}

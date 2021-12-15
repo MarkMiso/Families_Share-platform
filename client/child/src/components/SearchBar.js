@@ -3,14 +3,16 @@ import PropTypes from "prop-types";
 import { SearchIcon } from "@heroicons/react/outline";
 import List from "./List";
 import { useTranslation } from "react-i18next";
+import LoadingSpinner from "./LoadingSpinner";
 
-// TODO: use type and animations
-function SearchBar({type, data }) {
+// TODO: optimize
+function SearchBar({ data, dataInfo }) {
   const [filteredData, setFilteredData] = useState(data);
   const { t } = useTranslation();
 
   const handleFilter = (event) => {
     const searchWord = event.target.value;
+
     setFilteredData(data.filter((item) => {
       return item.name.includes(searchWord);
     }));
@@ -26,10 +28,10 @@ function SearchBar({type, data }) {
       </div>
       <div className="mt-3">
         {filteredData ? (
-            <List data={filteredData.map((item) => {return item.group_id})} blockInfo={{type: "group", isMember: false}}/>
+            <List data={filteredData} blockInfo={dataInfo}/>
           ) : (
             <p>
-              Eh si ma dammi il tempo
+              <LoadingSpinner />
             </p>
         )}
       </div>
@@ -38,7 +40,7 @@ function SearchBar({type, data }) {
 }
 
 SearchBar.propTypes = {
-  type: PropTypes.string,
+  type: PropTypes.object,
   data: PropTypes.array
 }
 

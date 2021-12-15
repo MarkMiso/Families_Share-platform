@@ -25,11 +25,14 @@ const resources = {
       "join": "Join",
       "your groups": "Your Groups",
       "no results": "No Resoults",
-      "your activities": "Your Activities",
+      "your activities": "Your Activities",   // forse non usata
       "search": "Type Here...",
       "search groups": "Search a Group",
       "groups": "Groups",
-      "activities": "Activities"
+      "group": "Group",
+      "activities": "Activities",
+      "search activities" : "Search an Activity",
+      "your events": "Your Events"
     }
   },
   it: {
@@ -56,7 +59,10 @@ const resources = {
       "search": "Scrivi Qui...",
       "search groups": "Cerca un Gruppo",
       "groups": "Gruppi",
-      "activities": "Attività"
+      "group": "Gruppo",
+      "activities": "Attività",
+      "search activities": "Cerca una Attività",
+      "your events": "I tuoi Eventi"
     }
   }
 };

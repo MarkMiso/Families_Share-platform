@@ -33,7 +33,7 @@ const fetchEvents = userId => {
 const userNav = [
   { name: 'dashboard', href: '/myfamilyshare', current: true },
   { name: 'groups', href: '/myfamilyshare/groups', current: false },
-  { name: 'activities', href: '/myfamilyshare/groups', current: false },
+  { name: 'activities', href: '/myfamilyshare/activities', current: false },
   { name: 'calendar', href: '/myfamilyshare/calendar', current: false }
 ]
 
@@ -66,14 +66,14 @@ function MyFamilyShare() {
               {t('your groups')}
             </p>
             {groups ? (
-              <List data={groups.map((item) => {return item.group_id})} blockInfo={{type: "group", isMember: true}}/>
+              <List data={groups} blockInfo={{type: "group", isMember: true}}/>
             ) : (
               <LoadingSpinner />
             )}
           </div>
           <div className="ActivitiesListContainer">
             <p className="p-8 text-4xl text-transparent bg-clip-text font-black bg-gradient-to-r from-red-500 to-pink-500">
-              {t('your activities')}
+              {t('your events')}
             </p>
             {events ? (
               <List data={events} blockInfo={{type: "event"}}/>
