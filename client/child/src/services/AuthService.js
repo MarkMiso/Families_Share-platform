@@ -15,7 +15,7 @@ function signin(email, password, origin, deviceToken, callback) {
     data.version = localStorage.getItem("version");
   }
 
-  return axios({
+  return axios.post({
     url: "/api/users/authenticate/email",
     method: "POST",
     headers: { "Content-Type": "application/json" },

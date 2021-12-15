@@ -60,7 +60,6 @@ class CreateChildScreen extends React.Component {
         special_needs: "",
         other_info: "",
         background: "#00838F",
-        isAccount: false,
         acceptAdditionalTerms: false,
         image: "/images/profiles/child_default_photo.jpg"
       };
@@ -503,7 +502,7 @@ class CreateChildScreen extends React.Component {
                   type="text"
                   name="username"
                   className="createChildProfileInputField form-control"
-                  placeholder={texts.username}
+                  placeholder="Username"
                   onChange={this.handleChange}
                   value={username}
                 />
@@ -515,7 +514,7 @@ class CreateChildScreen extends React.Component {
                   type="password"
                   name="password"
                   className="createChildProfileInputField form-control"
-                  placeholder={texts.password}
+                  placeholder="Password"
                   onChange={this.handleChange}
                   value={password}
                 />

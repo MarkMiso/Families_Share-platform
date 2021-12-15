@@ -25,7 +25,11 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
+<<<<<<< Updated upstream
     "start": "craco start",
+=======
+    "start": "SET PORT=2000 && craco start",
+>>>>>>> Stashed changes
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject"
@@ -48,7 +52,11 @@
       "last 1 safari version"
     ]
   },
+<<<<<<< Updated upstream
   "proxy": "http://server:4000/",
+=======
+  "proxy": "http://localhost:4000/",
+>>>>>>> Stashed changes
   "devDependencies": {
     "autoprefixer": "^9.8.8",
     "postcss": "^7.0.39",

@@ -36,7 +36,7 @@ export function LoginScreen() {
           <label className="block font-semibold text-gray-500">
             {t('email')}
           </label>
-          <input name="email" type="email" className="transition ease-in-out duration-300 mt-1 appearance-none rounded-md w-full px-3 py-2 border-2 border-gray-300 font-semibold text-gray-900 focus:outline-none focus:ring-1 focus:border-1 focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm"/>
+          <input name="email" type="text" className="transition ease-in-out duration-300 mt-1 appearance-none rounded-md w-full px-3 py-2 border-2 border-gray-300 font-semibold text-gray-900 focus:outline-none focus:ring-1 focus:border-1 focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm"/>
         </div>
 
         <div className="mt-5">
