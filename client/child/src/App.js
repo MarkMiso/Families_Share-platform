@@ -5,6 +5,9 @@ import LoadingSpinner from "./components/LoadingSpinner";
 import { AuthProvider, RequireAuth } from "./components/AuthProvider";
 import axios from "axios";
 
+
+axios.defaults.baseURL = 'http://localhost:4000';
+
 const Loading = <LoadingSpinner />;
 
 const LandingScreen = Loadable({

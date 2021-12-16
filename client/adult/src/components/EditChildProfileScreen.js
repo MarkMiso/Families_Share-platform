@@ -181,7 +181,9 @@ class EditChildProfileScreen extends React.Component {
     }
     bodyFormData.append("given_name", given_name);
     bodyFormData.append("username", username);
-    bodyFormData.append("password", password);
+    if(password !==  '' || password !==  undefined || password !==  null){
+      bodyFormData.append("password", password);
+    }
     bodyFormData.append("family_name", family_name);
     bodyFormData.append("gender", gender);
     bodyFormData.append("background", background);

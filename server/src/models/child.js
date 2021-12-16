@@ -47,9 +47,16 @@ const childSchema = new mongoose.Schema(
     isAccount:{
       type: Boolean,
     },
+    deviceToken:{
+      type: String,
+    },
+    token:{
+      type: String,
+    },
     allergies: String,
     special_needs: String,
-    other_info: String
+    other_info: String,
+    last_login: Date,
   },
   { timestamps: true, toJSON: { virtuals: true } }
 )
@@ -88,6 +95,7 @@ childSchema.post('findOne', (profile, next) => {
 
 childSchema.pre('save', function (next) {
   const child = this
+  console.log(child)
   if (!child.isModified('password')) return next()
   bcrypt.genSalt(10, (err, salt) => {
     if (err) return next(err)

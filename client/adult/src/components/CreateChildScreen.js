@@ -169,7 +169,9 @@ class CreateChildScreen extends React.Component {
     bodyFormData.append("given_name", given_name);
     bodyFormData.append("family_name", family_name);
     bodyFormData.append("username", username);
-    bodyFormData.append("password", password);
+    if(password !==  '' || password !==  undefined || password !==  null){
+      bodyFormData.append("password", password);
+    }
     bodyFormData.append("isAccount", isAccount);
     bodyFormData.append("gender", gender);
     bodyFormData.append("background", background);

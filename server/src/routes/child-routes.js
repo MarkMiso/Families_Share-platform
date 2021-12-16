@@ -22,4 +22,50 @@ router.get('/', (req, res, next) => {
     }).catch(next)
 })
 
+
+router.post('/authenticate/email', async (req, res, next) => {
+  const {
+    username, password, language, origin
+  } = req.body
+  try {
+    const child = await Child.findOne({ username })
+    if (!child) {
+      return res.status(401).send('Authentication failure')
+    }
+    const passwordMatch = await child.comparePassword(password)
+    if (!passwordMatch) {
+      return res.status(401).send('Authentication failure')
+    }
+
+    if (profile.suspended) {
+        const response = {
+          message: "Account sospeso"
+        }
+        res.json(response)
+    }else{
+      console.log("ok")
+      const response = {
+        id: child.child_id,
+        username,
+        given_name: `${profile.given_name} ${profile.family_name}`,
+        image: child.image.path,
+        token,
+        role: 'child'
+      }
+      child.last_login = new Date()
+      child.token = token
+      if (origin === 'native') {
+        child.version = req.body.version
+      } else {
+        child.version = 'latest'
+      }
+      await child.save()
+      res.json(response)
+    }
+  } catch (error) {
+    next(error)
+  }
+})
+
+
 module.exports = router

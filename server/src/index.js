@@ -10,6 +10,7 @@ const compression = require('compression')
 const http = require('http')
 const https = require('https')
 const fs = require('fs')
+var cors = require('cors')
 
 const HTTPS_PORT = parseInt(process.env.HTTPS_PORT, 10)
 const HTTP_PORT = parseInt(process.env.HTTP_PORT, 10)
@@ -52,6 +53,8 @@ app.use(async (req) => {
 })
 app.use(compression())
 
+app.use(cors()) 
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use('/images', express.static(path.join(__dirname, '../images')))
@@ -67,6 +70,7 @@ app.use('/api/profiles', require('./routes/profile-routes'))
 app.use('/api/children', require('./routes/child-routes'))
 app.use('/api/github', require('./routes/github-routes'))
 app.use('/api/community', require('./routes/community-routes'))
+
 
 if (config.util.getEnv('NODE_ENV') === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')))
