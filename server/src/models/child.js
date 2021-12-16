@@ -18,7 +18,7 @@ const childSchema = new mongoose.Schema(
     },
     password:{
       type:String,
-      minLength: 8
+      minLength: 0
     },
     family_name: {
       type: String,
@@ -51,6 +51,9 @@ const childSchema = new mongoose.Schema(
       type: String,
     },
     token:{
+      type: String,
+    },
+    deviceToken:{
       type: String,
     },
     allergies: String,

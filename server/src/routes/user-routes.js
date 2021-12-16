@@ -913,6 +913,7 @@ router.post('/:id/children', childProfileUpload.single('photo'), async (req, res
     username,
     password,
     isAccount,
+    token: '',
     family_name,
     gender,
     allergies,
@@ -921,6 +922,7 @@ router.post('/:id/children', childProfileUpload.single('photo'), async (req, res
     background,
     suspended: false
   }
+  
   const image_id = objectid()
   const child_id = objectid()
   const image = {
@@ -928,6 +930,7 @@ router.post('/:id/children', childProfileUpload.single('photo'), async (req, res
     owner_type: 'child',
     owner_id: child_id
   }
+  
   if (file) {
     const fileName = file.filename.split('.')
     image.path = `/images/profiles/${file.filename}`
@@ -944,6 +947,7 @@ router.post('/:id/children', childProfileUpload.single('photo'), async (req, res
   }
   child.child_id = child_id
   child.image_id = image_id
+  const token = jwt.sign({ child_id, username }, process.env.SERVER_SECRET)
   const parent = {
     parent_id,
     child_id
