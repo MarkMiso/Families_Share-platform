@@ -39,31 +39,25 @@ function GroupsPage() {
   return(
     <div name="GroupsPageContainer">
       <Navbar navigation={userNav}/>
-      <div className="max-w-3xl mx-auto px-2 flex justify-center sm:px-6 lg:px-8">
-        <div className="w-full text-center">
-          <div name="ListContainer">
-            <p className="p-8 text-4xl text-transparent bg-clip-text font-black bg-gradient-to-r from-yellow-500 to-red-500">
-              {t('your groups')}
-            </p>
-            {groups ? (
-              <List data={groups} blockInfo={{type: "group", isMember: true}}/>
-            ) : (
-              <LoadingSpinner />
-            )}
-          </div>
-          <div name="GroupSearchContainer">
-            <p className="p-8 text-4xl text-transparent bg-clip-text font-black bg-gradient-to-r from-yellow-500 to-red-500">
-              {t('search groups')}
-            </p>
-            {search ? (
-              <SearchBar dataInfo={{type: "group", isMember: false}} data={search} />
-            ) : (
-              <LoadingSpinner />
-            )}
-            
-          </div>
-        </div>
-      </div>
+      <div className="max-w-3xl mx-auto px-2 flex flex-col items-center sm:px-6 lg:px-8">
+        <p className="p-8 text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-red-500">
+          {t('your groups')}
+        </p>
+        {groups ? (
+          <List data={groups} blockInfo={{type: "group", isMember: true}}/>
+        ) : (
+          <LoadingSpinner />
+        )}
+
+        <p className="p-8 text-4xl text-transparent bg-clip-text font-black bg-gradient-to-r from-yellow-500 to-red-500">
+          {t('search groups')}
+        </p>
+        {search ? (
+          <SearchBar dataInfo={{type: "group", isMember: false}} data={search} />
+        ) : (
+          <LoadingSpinner />
+        )}
+    </div>
     </div>
   )
 }

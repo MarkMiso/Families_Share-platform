@@ -37,29 +37,24 @@ function MyFamilyShare() {
   return (
     <div className="MyFamilyShareContainer">
       <Navbar navigation={userNav}/>
-      <div className="max-w-3xl mx-auto px-2 flex justify-center sm:px-6 lg:px-8 ">
-        <div className="w-full text-center">
-          <div className="ListContainer">
-            <p className="p-8 text-4xl text-transparent bg-clip-text font-black bg-gradient-to-r from-yellow-500 to-red-500">
-              {t('your groups')}
-            </p>
-            {groups ? (
-              <List data={groups} blockInfo={{type: "group", isMember: true}}/>
-            ) : (
-              <LoadingSpinner />
-            )}
-          </div>
-          <div className="ActivitiesListContainer">
-            <p className="p-8 text-4xl text-transparent bg-clip-text font-black bg-gradient-to-r from-red-500 to-pink-500">
-              {t('your events')}
-            </p>
-            {events ? (
-              <List data={events} blockInfo={{type: "event"}}/>
-            ) : (
-              <LoadingSpinner />
-            )}
-          </div>
-        </div>
+      <div className="max-w-3xl mx-auto px-2 flex flex-col items-center sm:px-6 lg:px-8 ">
+        <p className="p-8 text-4xl text-transparent bg-clip-text font-black bg-gradient-to-r from-yellow-500 to-red-500">
+          {t('your groups')}
+        </p>
+        {groups ? (
+          <List data={groups} blockInfo={{type: "group", isMember: true}}/>
+        ) : (
+          <LoadingSpinner />
+        )}
+
+        <p className="p-8 text-4xl text-transparent bg-clip-text font-black bg-gradient-to-r from-red-500 to-pink-500">
+          {t('your events')}
+        </p>
+        {events ? (
+          <List data={events} blockInfo={{type: "event"}}/>
+        ) : (
+          <LoadingSpinner />
+        )}
       </div>
     </div>
   )

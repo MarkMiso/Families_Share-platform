@@ -55,30 +55,24 @@ function ActivitiesPage() {
   return(
     <div name="GroupsPageContainer">
       <Navbar navigation={userNav}/>
-      <div className="max-w-3xl mx-auto px-2 flex justify-center sm:px-6 lg:px-8">
-        <div className="w-full text-center">
-          <div name="ListContainer">
-            <p className="p-8 text-4xl text-transparent bg-clip-text font-black bg-gradient-to-r from-red-500 to-pink-500">
-              {t('your events')}
-            </p>
-            {events ? (
-              <List data={events} blockInfo={{type: "event"}}/>
-            ) : (
-              <LoadingSpinner />
-            )}
-          </div>
-          <div name="GroupSearchContainer">
-            <p className="p-8 text-4xl text-transparent bg-clip-text font-black bg-gradient-to-r from-red-500 to-pink-500">
-              {t('search activities')}
-            </p>
-            {activities ? (
-              <SearchBar dataInfo={{type: "activity"}} data={activities} />
-            ) : (
-              <LoadingSpinner />
-            )}
-            
-          </div>
-        </div>
+      <div className="max-w-3xl mx-auto px-2 flex flex-col items-center sm:px-6 lg:px-8">
+        <p className="p-8 text-4xl text-transparent bg-clip-text font-black bg-gradient-to-r from-red-500 to-pink-500">
+          {t('your events')}
+        </p>
+        {events ? (
+          <List data={events} blockInfo={{type: "event"}}/>
+        ) : (
+          <LoadingSpinner />
+        )}
+        
+        <p className="p-8 text-4xl text-transparent bg-clip-text font-black bg-gradient-to-r from-red-500 to-pink-500">
+          {t('search activities')}
+        </p>
+        {activities ? (
+          <SearchBar dataInfo={{type: "activity"}} data={activities} />
+        ) : (
+          <LoadingSpinner />
+        )}
       </div>
     </div>
   )

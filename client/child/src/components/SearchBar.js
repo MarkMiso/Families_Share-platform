@@ -20,7 +20,7 @@ function SearchBar({ data, dataInfo }) {
   }
 
   return(
-    <div name="SearchBarContainer">
+    <div name="SearchBarContainer" className="w-full">
       <div className="flex items-center rounded-xl bg-white shadow-md overflow-hidden">
         <input name="search" type="text" placeholder={t('search')} onChange={handleFilter} className="font-semibold transition appearance-none w-full px-4 py-3 text-gray-900 focus:outline-none"/>
         <button className="p-3">

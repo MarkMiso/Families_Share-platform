@@ -36,13 +36,15 @@ function List({ children, data, blockInfo }) {
   if (blockInfo.type === "group") {
   }
   return (
-    <div className="bg-white rounded-xl grid grid-cols-1 divide-y-2 divide-gray-200 shadow-md overflow-hidden">
-      {data.length > 0 ? (data.map((item) => (<Block item={item} blockInfo={blockInfo}/>))) : (
-        <p className="p-5 font-semibold text-gray-400">
-          {t('no results')}
-        </p>
-      )}
-      {children}
+    <div name="listContainer" className="w-full">
+      <div className="bg-white rounded-xl grid grid-cols-1 divide-y-2 divide-gray-200 shadow-md overflow-hidden">
+        {data.length > 0 ? (data.map((item) => (<Block item={item} blockInfo={blockInfo}/>))) : (
+          <p className="p-5 font-semibold text-gray-400">
+            {t('no results')}
+          </p>
+        )}
+        {children}
+      </div>
     </div>
   )
 }
