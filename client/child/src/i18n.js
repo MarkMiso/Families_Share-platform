@@ -58,7 +58,7 @@ const resources = {
       "dashboard": "Pannello",
       "calendar": "Calendario",
       "app description": "Il progetto Families_Share sta sviluppando una piattaforma volta a favorire la diffusione di reti sociali e la sensibilizzazione nell'ambito della cura all'infanzia e dell'equilibrio vita-lavoro",
-      "signin prompt": "Entra ne tuo account",
+      "signin prompt": "Entra nel tuo account",
       "open group": "Gruppo Aperto: Chiunque può unirsi",
       "closed group": "Gruppo Chiuso: Solo su invito",
       "join": "Unisciti",

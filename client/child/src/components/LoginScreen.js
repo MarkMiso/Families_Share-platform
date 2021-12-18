@@ -24,7 +24,7 @@ export function LoginScreen() {
   return (
     <div className="max-w-xl mx-auto px-2 flex flex-col sm:px-6 lg:px-8">
       <form onSubmit={handleSubmit} className="mt-12 w-full p-5 shadow-lg rounded-xl bg-white">
-        <div className="text-center">
+        <div className="flex flex-col items-center">
           <p className="text-5xl text-transparent bg-clip-text font-black bg-gradient-to-r from-yellow-500 to-red-500 pt-3">
             Families Share 
           </p>
