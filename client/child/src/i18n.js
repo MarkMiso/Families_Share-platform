@@ -32,7 +32,16 @@ const resources = {
       "group": "Group",
       "activities": "Activities",
       "search activities" : "Search an Activity",
-      "your events": "Your Events"
+      "your events": "Your Events",
+      "close": "Close",
+      "mon": "Mon",
+      "tue": "Tue",
+      "wed": "Wed",
+      "thu": "Thu",
+      "fri": "Fri",
+      "sat": "Sat",
+      "sun": "Sun",
+      "your calendar": "Your Calendar",
     }
   },
   it: {
@@ -62,7 +71,16 @@ const resources = {
       "group": "Gruppo",
       "activities": "Attività",
       "search activities": "Cerca una Attività",
-      "your events": "I tuoi Eventi"
+      "your events": "I tuoi Eventi",
+      "close": "Chiudi",
+      "mon": "Lun",
+      "tue": "Mar",
+      "wed": "Mer",
+      "thu": "Gio",
+      "fri": "Ven",
+      "sat": "Sab",
+      "sun": "Dom",
+      "your calendar": "Il tuo Calendario",
     }
   }
 };

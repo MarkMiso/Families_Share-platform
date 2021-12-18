@@ -18,7 +18,7 @@ function EventBlock({ event }) {
         </p>
       </div>
       <div className="pl-5 text-left">
-        <p className="text-xl inline-block text-transparent bg-clip-text font-black bg-gradient-to-r from-red-500 to-pink-500">
+        <p className={`text-xl inline-block font-black  text-activity-${event.extendedProperties.shared.activityColor}`}>
           {event.summary}
         </p>
         <p className="text-gray-400">

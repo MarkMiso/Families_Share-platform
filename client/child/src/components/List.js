@@ -30,7 +30,7 @@ function Block( {item, blockInfo} ) {
   )
 }
 
-function List({ data, blockInfo }) {
+function List({ children, data, blockInfo }) {
   let { t } = useTranslation();
 
   if (blockInfo.type === "group") {
@@ -42,6 +42,7 @@ function List({ data, blockInfo }) {
           {t('no results')}
         </p>
       )}
+      {children}
     </div>
   )
 }
