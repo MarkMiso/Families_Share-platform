@@ -41,7 +41,7 @@ function MyFamilyShare() {
         </p>
         <List data={groups} blockInfo={{type: "group", isMember: true}}/>
 
-        <p className="p-8 text-4xl text-transparent bg-clip-text font-black bg-gradient-to-r from-red-500 to-pink-500">
+        <p className="p-8 text-4xl text-transparent bg-clip-text font-black bg-gradient-to-r from-pink-500 to-purple-500">
           {t('your events')}
         </p>
         <List data={events} blockInfo={{type: "event"}}/>

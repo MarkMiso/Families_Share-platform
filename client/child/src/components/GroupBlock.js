@@ -55,6 +55,56 @@ function GroupBlock({ groupId, isMember }) {
     setData();
   },[groupId]);
 
+  function actionButton() {
+    if (isMember) {
+      return (
+        <div>
+          {groupSettings ? (
+            <div>
+              <button className="font-semibold text-white mt-2 rounded-md py-1 px-8 bg-gradient-to-r from-yellow-500 to-red-500 w-full sm:w-40"
+                onClick={() => {
+                  // TODO: leave the group
+                }}>
+                {t('leave')}
+              </button>
+              <p className="font-medium text-gray-400 text-xs mt-2">{groupSettings.open ? t('open group') : t('closed group')}</p>
+            </div>
+          ) : (
+            <div>
+              <button className="animate-pulse font-semibold text-white mt-2 rounded-md py-1 px-8 bg-gray-200 w-full sm:w-40">
+                Join Button
+              </button>
+              <p className="font-medium text-gray-300 text-xs mt-2 animate-pulse">group settings</p>
+            </div>
+          )}
+        </div>
+      )
+    }
+
+    return (
+      <div>
+        {groupSettings ? (
+          <div>
+            <button className="font-semibold text-white mt-2 rounded-md py-1 px-8 bg-gradient-to-r from-yellow-500 to-red-500 w-full sm:w-40"
+              onClick={() => {
+                // TODO: join the group
+              }}>
+              {t('join')}
+            </button>
+            <p className="font-medium text-gray-400 text-xs mt-2">{groupSettings.open ? t('open group') : t('closed group')}</p>
+          </div>
+        ) : (
+          <div>
+            <button className="animate-pulse font-semibold text-white mt-2 rounded-md py-1 px-8 bg-gray-200 w-full sm:w-40">
+              Join Button
+            </button>
+            <p className="font-medium text-gray-300 text-xs mt-2 animate-pulse">group settings</p>
+          </div>
+        )}
+      </div>
+    )
+  }
+
   return (
     <div className = "cursor-pointer bg-white flex mb-5 mx-5 pt-5 font-semibold"
       onClick={() => {
@@ -89,32 +139,7 @@ function GroupBlock({ groupId, isMember }) {
             <p className="text-gray-300 text-sm animate-pulse">description</p>
           )}
         </div>
-
-        {isMember ? (
-          <></>
-        ) : (
-          <div>
-            {groupSettings ? (
-              <div>
-                <button className="font-semibold text-white mt-2 rounded-md py-1 px-8 bg-gradient-to-r from-yellow-500 to-red-500 w-full sm:w-40"
-                  onClick={() => {
-                    // TODO: join button
-                  }}>
-                  {t('join')}
-                </button>
-                <p className="font-medium text-gray-400 text-xs mt-2">{groupSettings.open ? t('open group') : t('closed group')}</p>
-              </div>
-            ) : (
-              <div>
-                <button className="animate-pulse font-semibold text-white mt-2 rounded-md py-1 px-8 bg-gray-200 w-full sm:w-40">
-                  Join Button
-                </button>
-                <p className="font-medium text-gray-300 text-xs mt-2 animate-pulse">group settings</p>
-              </div>
-            )}
-          </div>
-        )}
-
+        {actionButton()}
       </div>
     </div>
   )

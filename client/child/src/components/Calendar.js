@@ -50,7 +50,7 @@ function Calendar({ eventsList }) {
   return (
     <div className="bg-white w-full rounded-xl shadow-md p-5">
       <div className="flex justify-center items-center">
-        <button className="bg-pink-500 text-white rounded-md p-2" onClick={() => {
+        <button className="bg-purple-500 text-white rounded-md p-2" onClick={() => {
           if (activeDate.getMonth() === 0) {
             setActiveDate(new Date(activeDate.getFullYear() - 1, 11, 1))
           } else {
@@ -59,10 +59,10 @@ function Calendar({ eventsList }) {
         }}>
           <ChevronLeftIcon className="h-4 w-4"/>
         </button>
-        <p className="text-xl mx-3 leading-none text-center w-24 text-transparent bg-clip-text font-black bg-gradient-to-r from-pink-500 to-purple-500">
+        <p className="text-xl mx-3 leading-none text-center w-24 text-transparent bg-clip-text font-black bg-gradient-to-r from-purple-500 to-blue-500">
           {dateString}
         </p>
-        <button className="bg-purple-500 text-white rounded-md p-2" onClick={() => {
+        <button className="bg-blue-500 text-white rounded-md p-2" onClick={() => {
           if (activeDate.getMonth() === 11) {
             setActiveDate(new Date(activeDate.getFullYear() + 1, 0, 1))
           } else {

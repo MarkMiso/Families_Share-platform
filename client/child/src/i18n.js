@@ -42,6 +42,7 @@ const resources = {
       "sat": "Sat",
       "sun": "Sun",
       "your calendar": "Your Calendar",
+      "leave": "Leave"
     }
   },
   it: {
@@ -81,6 +82,7 @@ const resources = {
       "sat": "Sab",
       "sun": "Dom",
       "your calendar": "Il tuo Calendario",
+      "leave": "Lascia"
     }
   }
 };

@@ -10,7 +10,7 @@ import LoadingSpinner from "./LoadingSpinner";
 function Block( {item, blockInfo} ) {
   if (blockInfo.type === "group") {
     return (
-      <GroupBlock groupId={item.group_id} isMember={blockInfo.isMember}/>
+      <GroupBlock groupId={item.group_id} isMember={item.isMember}/>
     )
   }
 

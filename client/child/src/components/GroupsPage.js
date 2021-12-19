@@ -27,6 +27,19 @@ function GroupsPage() {
     async function setData() {
       let groupRes = await fetchGroups(auth.user.id);
       let searchRes = await fetchGroupsAll();
+      let groupIdList = []
+
+      groupRes.forEach((group) => {
+        groupIdList.push(group.group_id)
+      })
+
+      searchRes.map((group) => {
+        if (groupIdList.includes(group.group_id)) {
+          group.isMember = true
+        }
+
+        return group
+      })
 
       setSearch(searchRes);
       setGroups(groupRes);
@@ -47,7 +60,7 @@ function GroupsPage() {
         <p className="p-8 text-4xl text-transparent bg-clip-text font-black bg-gradient-to-r from-yellow-500 to-red-500">
           {t('search groups')}
         </p>
-        <SearchBar dataInfo={{type: "group", isMember: false}} data={search} />
+        <SearchBar dataInfo={{type: "group"}} data={search} />
     </div>
     </div>
   )

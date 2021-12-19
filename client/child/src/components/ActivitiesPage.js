@@ -55,12 +55,12 @@ function ActivitiesPage() {
     <div name="GroupsPageContainer">
       <Navbar navigation={userNav}/>
       <div className="max-w-3xl mx-auto px-2 flex flex-col items-center sm:px-6 lg:px-8">
-        <p className="p-8 text-4xl text-transparent bg-clip-text font-black bg-gradient-to-r from-red-500 to-pink-500">
+        <p className="p-8 text-4xl text-transparent bg-clip-text font-black bg-gradient-to-r from-pink-500 to-purple-500">
           {t('your events')}
         </p>
         <List data={events} blockInfo={{type: "event"}}/>
         
-        <p className="p-8 text-4xl text-transparent bg-clip-text font-black bg-gradient-to-r from-red-500 to-pink-500">
+        <p className="p-8 text-4xl text-transparent bg-clip-text font-black bg-gradient-to-r from-pink-500 to-purple-500">
           {t('search activities')}
         </p>
         <SearchBar dataInfo={{type: "activity"}} data={activities} />

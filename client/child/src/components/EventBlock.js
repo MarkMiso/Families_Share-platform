@@ -1,25 +1,40 @@
 import React from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
+import { UserAddIcon, UserRemoveIcon } from '@heroicons/react/outline';
+import { useAuth } from "./AuthProvider";
 
 function EventBlock({ event }) {
+  const auth = useAuth();
   let date = moment(event.start.dateTime).format("MMM D");
   let startTime = moment(event.start.dateTime).format("HH:mm");
   let endTime = moment(event.end.dateTime).format("HH:mm");
 
-  console.log(event)
+  function actionButton() {
+    // todo: add/remove user from event
+    if (event.extendedProperties.shared.parents.includes(auth.user.id)) {
+      return (
+        <button className="p-2 ml-auto rounded-md text-purple-500 border-purple-500 border-2 hover:bg-purple-500 hover:text-white">
+          <UserRemoveIcon className="h-6 w-6"/>
+        </button>
+      )
+    }
+
+    return (
+      <button className="p-2 ml-auto rounded-md text-pink-500 border-pink-500 border-2 hover:bg-pink-500 hover:text-white">
+        <UserAddIcon className="h-6 w-6"/>
+      </button>
+    )
+  }
   
   return (
-    <div className="cursor-pointer flex align-middle mb-5 mx-5 pt-5 font-semibold" 
-      onClick={() =>{
-        // TODO: manda alla schermata della attività
-    }}>
+    <div className="flex items-center mb-5 mx-5 pt-5 font-semibold">
       <div className="flex items-center p-3 rounded-md border-2 border-gray-200 shadow-inner">
         <p className="text-gray-500">
           {date}
         </p>
       </div>
-      <div className="pl-5 text-left">
+      <div className="px-5 text-left">
         <p className={`text-xl inline-block font-black  text-activity-${event.extendedProperties.shared.activityColor}`}>
           {event.summary}
         </p>
@@ -27,7 +42,7 @@ function EventBlock({ event }) {
           {startTime} - {endTime}
         </p>
       </div>
-        
+      {actionButton()}
     </div>
 
   )

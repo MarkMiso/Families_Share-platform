@@ -4,6 +4,11 @@ const fetchGroups = (userId) => {
   return axios
     .get(`/api/users/${userId}/groups`)
     .then(response => {
+      response.data.map((group) => {
+        group.isMember = true;
+        return group;
+      })
+      
       return response.data;
     })
     .catch(error => {

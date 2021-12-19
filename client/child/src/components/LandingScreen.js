@@ -29,7 +29,7 @@ function LandingScreen() {
         <p className="font-semibold text-lg text-gray-500 py-8">
           {t('app description')}
         </p>
-        <Link className="flex-none shadow-lg text-white text-xl font-semibold px-12 py-2 rounded-md bg-gradient-to-r from-yellow-500 to-red-500" to="/login">
+        <Link className="flex-none shadow-lg text-white text-xl font-semibold px-12 py-2 rounded-md bg-gradient-to-r from-pink-500 to-purple-500" to="/login">
           {t('login')}
         </Link>
       </div>
