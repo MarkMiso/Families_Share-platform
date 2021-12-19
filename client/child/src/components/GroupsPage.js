@@ -8,7 +8,6 @@ import { useAuth } from "./AuthProvider";
 import Navbar from "./Navbar";
 import List from "./List";
 import SearchBar from "./SearchBar";
-import LoadingSpinner from "./LoadingSpinner";
 
 
 const userNav = [
@@ -43,20 +42,12 @@ function GroupsPage() {
         <p className="p-8 text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-red-500">
           {t('your groups')}
         </p>
-        {groups ? (
-          <List data={groups} blockInfo={{type: "group", isMember: true}}/>
-        ) : (
-          <LoadingSpinner />
-        )}
+        <List data={groups} blockInfo={{type: "group", isMember: true}}/>
 
         <p className="p-8 text-4xl text-transparent bg-clip-text font-black bg-gradient-to-r from-yellow-500 to-red-500">
           {t('search groups')}
         </p>
-        {search ? (
-          <SearchBar dataInfo={{type: "group", isMember: false}} data={search} />
-        ) : (
-          <LoadingSpinner />
-        )}
+        <SearchBar dataInfo={{type: "group", isMember: false}} data={search} />
     </div>
     </div>
   )

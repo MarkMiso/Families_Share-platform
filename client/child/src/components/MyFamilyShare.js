@@ -6,7 +6,6 @@ import { useAuth } from "./AuthProvider";
 import Navbar from "./Navbar";
 import List from "./List";
 import { useTranslation } from "react-i18next";
-import LoadingSpinner from "./LoadingSpinner";
 
 const userNav = [
   { name: 'dashboard', href: '/myfamilyshare', current: true },
@@ -33,7 +32,6 @@ function MyFamilyShare() {
     setData();
   },[auth.user.id]);
 
-  // TODO: loading animation
   return (
     <div className="MyFamilyShareContainer">
       <Navbar navigation={userNav}/>
@@ -41,20 +39,12 @@ function MyFamilyShare() {
         <p className="p-8 text-4xl text-transparent bg-clip-text font-black bg-gradient-to-r from-yellow-500 to-red-500">
           {t('your groups')}
         </p>
-        {groups ? (
-          <List data={groups} blockInfo={{type: "group", isMember: true}}/>
-        ) : (
-          <LoadingSpinner />
-        )}
+        <List data={groups} blockInfo={{type: "group", isMember: true}}/>
 
         <p className="p-8 text-4xl text-transparent bg-clip-text font-black bg-gradient-to-r from-red-500 to-pink-500">
           {t('your events')}
         </p>
-        {events ? (
-          <List data={events} blockInfo={{type: "event"}}/>
-        ) : (
-          <LoadingSpinner />
-        )}
+        <List data={events} blockInfo={{type: "event"}}/>
       </div>
     </div>
   )

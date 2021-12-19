@@ -1,14 +1,12 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { useTranslation } from "react-i18next";
 
 import { SearchIcon } from "@heroicons/react/outline";
 import List from "./List";
-import LoadingSpinner from "./LoadingSpinner";
 
-// TODO: optimize
 function SearchBar({ data, dataInfo }) {
-  const [filteredData, setFilteredData] = useState(data);
+  const [filteredData, setFilteredData] = useState(null);
   const { t } = useTranslation();
 
   const handleFilter = (event) => {
@@ -19,6 +17,10 @@ function SearchBar({ data, dataInfo }) {
     }));
   }
 
+  useEffect(() => {
+    setFilteredData(data);
+  },[data])
+
   return(
     <div name="SearchBarContainer" className="w-full">
       <div className="flex items-center rounded-xl bg-white shadow-md overflow-hidden">
@@ -28,13 +30,7 @@ function SearchBar({ data, dataInfo }) {
         </button>
       </div>
       <div className="mt-3">
-        {filteredData ? (
-            <List data={filteredData} blockInfo={dataInfo}/>
-          ) : (
-            <p>
-              <LoadingSpinner />
-            </p>
-        )}
+        <List data={filteredData} blockInfo={dataInfo}/>
       </div>
     </div>
   )

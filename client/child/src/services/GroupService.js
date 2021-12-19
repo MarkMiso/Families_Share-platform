@@ -24,4 +24,16 @@ const fetchActivites = (groupId) => {
     });
 };
 
-export { fetchGroupsAll, fetchActivites }
+const fetchActivityEvents = (activityId, groupId) => {
+  return axios
+    .get(`/api/groups/${groupId}/activities/${activityId}/timeslots`)
+    .then(response => {
+      return response.data;
+    })
+    .catch(error => {
+      console.error(error);
+      return [];
+    });
+};
+
+export { fetchGroupsAll, fetchActivites, fetchActivityEvents }

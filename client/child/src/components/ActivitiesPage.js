@@ -7,7 +7,6 @@ import { fetchActivites } from "../services/GroupService";
 import { useAuth } from "./AuthProvider";
 import Navbar from "./Navbar";
 import List from "./List";
-import LoadingSpinner from "./LoadingSpinner";
 import SearchBar from "./SearchBar";
 
 
@@ -59,20 +58,12 @@ function ActivitiesPage() {
         <p className="p-8 text-4xl text-transparent bg-clip-text font-black bg-gradient-to-r from-red-500 to-pink-500">
           {t('your events')}
         </p>
-        {events ? (
-          <List data={events} blockInfo={{type: "event"}}/>
-        ) : (
-          <LoadingSpinner />
-        )}
+        <List data={events} blockInfo={{type: "event"}}/>
         
         <p className="p-8 text-4xl text-transparent bg-clip-text font-black bg-gradient-to-r from-red-500 to-pink-500">
           {t('search activities')}
         </p>
-        {activities ? (
-          <SearchBar dataInfo={{type: "activity"}} data={activities} />
-        ) : (
-          <LoadingSpinner />
-        )}
+        <SearchBar dataInfo={{type: "activity"}} data={activities} />
       </div>
     </div>
   )

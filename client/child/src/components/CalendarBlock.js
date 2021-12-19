@@ -22,8 +22,10 @@ function CalendarBlock({ day }) {
         {day.events.length > 0 ? (
           <div className="grid grid-cols-1 gap-2 p-2 md:grid-cols-2">
           {day.events.map((event) => {
+            const eventColor = event.extendedProperties.shared.activityColor ? ("activity-" + event.extendedProperties.shared.activityColor) : ("black");
+            
             return(
-              <div className={`bg-activity-${event.extendedProperties.shared.activityColor} w- h-2 rounded-full`} />
+              <div className={`bg-${eventColor} w- h-2 rounded-full`} />
             )
           })}
           </div>

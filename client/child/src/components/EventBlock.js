@@ -6,6 +6,8 @@ function EventBlock({ event }) {
   let date = moment(event.start.dateTime).format("MMM D");
   let startTime = moment(event.start.dateTime).format("HH:mm");
   let endTime = moment(event.end.dateTime).format("HH:mm");
+
+  console.log(event)
   
   return (
     <div className="cursor-pointer flex align-middle mb-5 mx-5 pt-5 font-semibold" 
