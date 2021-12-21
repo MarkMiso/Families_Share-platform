@@ -13,7 +13,13 @@ function SearchBar({ data, dataInfo }) {
     const searchWord = event.target.value;
 
     setFilteredData(data.filter((item) => {
-      return item.name.includes(searchWord);
+      let other = false;
+
+      if (dataInfo.type === "activity") {
+        other = item.group_name.includes(searchWord);
+      }
+
+      return item.name.includes(searchWord) || other;
     }));
   }
 

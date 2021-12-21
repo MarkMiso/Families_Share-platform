@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { fetchActivityEvents } from "../services/GroupService"
 import { Dialog } from '@headlessui/react';
 import List from "./List";
+import { LocationMarkerIcon, UserGroupIcon } from '@heroicons/react/outline';
 
 function ActivitiesBlock({ activity }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,9 +35,16 @@ function ActivitiesBlock({ activity }) {
           <p className={`text-xl inline-block font-black text-activity-${activity.color}`}>
             {activity.name}
           </p>
-          <p className="text-gray-400">
-            {t('group')} : {activity.group_name}
-          </p>
+          <div className="text-gray-400 flex items-top">
+            <LocationMarkerIcon className="h-4 w-4 mt-1" />
+            <p className="ml-1">
+              {activity.location}
+            </p>
+            <UserGroupIcon className="h-4 w-4 mt-1 ml-4" />
+            <p className="ml-1">
+              {activity.group_name}
+            </p>
+          </div>
         </div>
       </div>
 
