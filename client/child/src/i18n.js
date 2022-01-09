@@ -41,7 +41,14 @@ const resources = {
       "sat": "Sat",
       "sun": "Sun",
       "your calendar": "Your Calendar",
-      "leave": "Leave"
+      "leave": "Leave",
+      "name": "Name",
+      "description": "Description",
+      "location": "Location",
+      "links": "Links",
+      "submit": "Submit",
+      "new activity": "New Activity",
+      "event list": "Event List",
     }
   },
   it: {
@@ -80,7 +87,14 @@ const resources = {
       "sat": "Sab",
       "sun": "Dom",
       "your calendar": "Il tuo Calendario",
-      "leave": "Lascia"
+      "leave": "Lascia",
+      "name": "Nome",
+      "description": "Descrizione",
+      "location": "Posizione",
+      "links": "Links",
+      "submit": "Invia",
+      "new activity": "Nuova Attività",
+      "event list": "Lista degli eventi",
     }
   }
 };

@@ -1,40 +1,10 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import axios from "axios";
 import { useTranslation } from "react-i18next";
 import { LocationMarkerIcon, DocumentTextIcon } from '@heroicons/react/outline';
 import { Dialog } from '@headlessui/react';
 import List from "./List";
-
-const fetchGroup = groupId => {
-  return axios
-    .get(`/api/groups/${groupId}`)
-    .then(response => {
-      return response.data;
-    })
-    .catch(error => {
-      console.error(error);
-      return {
-        image: { path: "" },
-        group_id: "",
-        name: ""
-      };
-    });
-};
-
-const fetchGroupSettings = groupId => {
-  return axios
-    .get(`/api/groups/${groupId}/settings`)
-    .then(response => {
-      return response.data;
-    })
-    .catch(error => {
-      console.error(error);
-      return {
-        open: ""
-      };
-    });
-};
+import { fetchGroup, fetchGroupSettings } from "../services/GroupService";
 
 function GroupBlock({ groupId, isMember }) {
   let [group, setGroup] = useState(null);
