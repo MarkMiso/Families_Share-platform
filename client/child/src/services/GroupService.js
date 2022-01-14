@@ -8,7 +8,7 @@ const fetchGroupsAll = () => {
   })
   .catch(error => {
     console.error(error);
-    return {};
+    return [];
   });
 }
 

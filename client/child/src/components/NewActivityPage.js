@@ -76,9 +76,11 @@ function NewActivityPage() {
   }
 
   function SelectGroup() {
-    if (!groups) {
+    if (!groups || selected === null || selected === undefined) {
       return (
-        <div>dio</div>
+        <div className="bg-white rounded-xl w-full p-5 shadow-md text-gray-400 font-semibold text-center">
+          {t('no results')}
+        </div>
       )
     }
 
