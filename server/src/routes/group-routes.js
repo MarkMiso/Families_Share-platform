@@ -1301,8 +1301,7 @@ router.get('/:groupId/activities/:activityId', (req, res, next) => {
     .catch(next)
 })
 
-router.post(
-  '/:groupId/activities/:activityId/export',
+router.post('/:groupId/activities/:activityId/export',
   async (req, res, next) => {
     if (!req.user_id) {
       return res.status(401).send('Not authenticated')
@@ -1388,8 +1387,7 @@ router.post(
   }
 )
 
-router.get(
-  '/:groupId/activities/:activityId/timeslots',
+router.get('/:groupId/activities/:activityId/timeslots',
   async (req, res, next) => {
     if (!req.user_id) {
       return res.status(401).send('Not authenticated')
@@ -1420,8 +1418,7 @@ router.get(
   }
 )
 
-router.get(
-  '/:groupId/activities/:activityId/timeslots/:timeslotId',
+router.get('/:groupId/activities/:activityId/timeslots/:timeslotId',
   async (req, res, next) => {
     if (!req.user_id) {
       return res.status(401).send('Not authenticated')
@@ -1456,8 +1453,7 @@ router.get(
   }
 )
 
-router.patch(
-  '/:groupId/activities/:activityId/timeslots/:timeslotId',
+router.patch('/:groupId/activities/:activityId/timeslots/:timeslotId',
   async (req, res, next) => {
     if (!req.user_id) {
       return res.status(401).send('Not authenticated')
@@ -1578,8 +1574,7 @@ router.patch(
   }
 )
 
-router.post(
-  '/:groupId/activities/:activityId/timeslots/add',
+router.post('/:groupId/activities/:activityId/timeslots/add',
   async (req, res, next) => {
     if (!req.user_id) {
       return res.status(401).send('Not authenticated')
@@ -1638,8 +1633,7 @@ router.post(
   }
 )
 
-router.delete(
-  '/:groupId/activities/:activityId/timeslots/:timeslotId',
+router.delete('/:groupId/activities/:activityId/timeslots/:timeslotId',
   async (req, res, next) => {
     if (!req.user_id) {
       return res.status(401).send('Not authenticated')
@@ -1707,8 +1701,7 @@ router.get('/:id/announcements', (req, res, next) => {
     .catch(next)
 })
 
-router.post(
-  '/:id/announcements',
+router.post('/:id/announcements',
   announcementUpload.array('photo', 3),
   async (req, res, next) => {
     if (!req.user_id) {
@@ -1759,8 +1752,7 @@ router.post(
   }
 )
 
-router.delete(
-  '/:groupId/announcements/:announcementId',
+router.delete( '/:groupId/announcements/:announcementId',
   async (req, res, next) => {
     if (!req.user_id) {
       return res.status(401).send('Not authenticated')
@@ -1798,8 +1790,7 @@ router.delete(
   }
 )
 
-router.post(
-  '/:groupId/announcements/:announcementId/replies',
+router.post('/:groupId/announcements/:announcementId/replies',
   async (req, res, next) => {
     if (!req.user_id) {
       return res.status(401).send('Not authenticated')
@@ -1833,8 +1824,7 @@ router.post(
     }
   })
 
-router.get(
-  '/:groupId/announcements/:announcementId/replies',
+router.get('/:groupId/announcements/:announcementId/replies',
   (req, res, next) => {
     if (!req.user_id) {
       return res.status(401).send('Not authenticated')
@@ -1863,8 +1853,7 @@ router.get(
   }
 )
 
-router.delete(
-  '/:groupId/announcements/:announcementId/replies/:replyId',
+router.delete('/:groupId/announcements/:announcementId/replies/:replyId',
   async (req, res, next) => {
     if (!req.user_id) {
       return res.status(401).send('Not authenticated')
