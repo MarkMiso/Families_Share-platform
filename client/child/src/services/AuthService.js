@@ -17,7 +17,7 @@ function signin(email, password, child, origin, deviceToken, callback) {
   }
 
   return axios({
-    url: "/api/users/authenticate/email",
+    url: "/api/children/authenticate/email",
     method: "post",
     headers: { "Content-Type": "application/json" },
     data: JSON.stringify(data)
