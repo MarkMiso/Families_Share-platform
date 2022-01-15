@@ -24,30 +24,6 @@ function GroupBlock({ groupId, isMember }) {
     setData();
   },[groupId]);
 
-
-  function actionButton() {
-    return (
-      <div className="items-center mb-5 mx-5 pt-3">
-        {isMember ? (
-          <button className="font-semibold text-white mt-2 rounded-md py-1 px-8 bg-gradient-to-r from-yellow-500 to-red-500 w-full hover:shadow-md focus:outline-none"
-            onClick={() => {
-              //todo
-            }}>
-            {t('leave')}
-          </button>
-        ) : (
-          <button className="font-semibold text-white mt-2 rounded-md py-1 px-8 bg-gradient-to-r from-yellow-500 to-red-500 w-full hover:shadow-md focus:outline-none"
-            onClick={() => {
-              //todo
-            }}>
-            {t('join')}
-          </button>
-        )}
-        <p className="text-center font-medium text-gray-400 text-xs mt-2">{groupSettings.open ? t('open group') : t('closed group')}</p>
-      </div>
-    )
-  }
-
   if (group) {
     return (
       <div className = "bg-white mb-5 mx-5 pt-5">
@@ -82,7 +58,9 @@ function GroupBlock({ groupId, isMember }) {
             <Dialog.Overlay className="fixed inset-0 bg-black opacity-30" />
               <div className="relative max-w-sm mx-auto">
                 <List data={[{group_id: groupId, isMember:isMember}]} blockInfo={{type: "group"}}>
-                  {actionButton()}
+                  <div className="items-center mb-5 mx-5 pt-3">
+                    <p className="text-center font-medium text-gray-400 text-xs mt-2">{groupSettings.open ? t('open group') : t('closed group')}</p>
+                  </div>
                   <button className="bg-white p-3 font-semibold text-gray-500 text-lg hover:bg-gray-100  focus:outline-none" onClick={() => setShowGroupInfo(false)}>
                     {t('close')}
                   </button>

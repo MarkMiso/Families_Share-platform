@@ -23,14 +23,14 @@ function MyFamilyShare() {
   useEffect(() => {
     async function setData() {
       let groupRes = await fetchGroups(auth.user.id);
-      let eventsRes = await fetchEvents(auth.user.id);
+      let eventsRes = await fetchEvents(auth.user.id, auth.user.child.child_id);
 
       setGroups(groupRes);
       setEvents(eventsRes);
     }
 
     setData();
-  },[auth.user.id]);
+  },[auth]);
 
   return (
     <div className="MyFamilyShareContainer">

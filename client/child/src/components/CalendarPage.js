@@ -20,13 +20,13 @@ function CalendarPage() {
 
   useEffect(() => {
     async function setData() {
-      let eventsRes = await fetchEvents(auth.user.id);
+      let eventsRes = await fetchEvents(auth.user.id, auth.user.child.child_id);
 
       setEvents(eventsRes);
     }
 
     setData();
-  },[auth.user.id])
+  },[auth])
 
   return (
     <div name="CalendarPageContainer">

@@ -26,7 +26,7 @@ function ActivitiesPage() {
 
   useEffect(() => {
     async function setData() {
-      const eventsRes = await fetchEvents(auth.user.id);
+      const eventsRes = await fetchEvents(auth.user.id, auth.user.child.child_id);
       const groupRes = await fetchGroups(auth.user.id);
       const activitiesResList = await Promise.all(groupRes.map(async (group) => {
         return await fetchActivites(group.group_id);
@@ -42,7 +42,7 @@ function ActivitiesPage() {
     }
 
     setData();
-  },[auth.user.id]);
+  },[auth]);
 
   return(
     <div name="GroupsPageContainer">

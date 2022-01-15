@@ -33,14 +33,6 @@ function GroupsPage() {
         groupIdList.push(group.group_id)
       })
 
-      searchRes.map((group) => {
-        if (groupIdList.includes(group.group_id)) {
-          group.isMember = true
-        }
-
-        return group
-      })
-
       setSearch(searchRes);
       setGroups(groupRes);
     }

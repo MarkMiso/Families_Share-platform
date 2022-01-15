@@ -34,7 +34,7 @@ function NewActivityPage() {
     setData();
   },[auth.user.id])
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
 
     const formData = new FormData(event.currentTarget);
@@ -96,8 +96,8 @@ function NewActivityPage() {
         }
       })
 
-      createActivity(selected.group_id, activity, events);
-      navigate('/myfamilyshare')
+      await createActivity(selected.group_id, activity, events);
+      navigate('/myfamilyshare/activities')
     }
     
   }

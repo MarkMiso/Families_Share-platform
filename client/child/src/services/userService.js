@@ -17,11 +17,13 @@ const fetchGroups = (userId) => {
     });
 };
 
-const fetchEvents = (userId) => {
+const fetchEvents = (userId, childId) => {
   return axios
     .get(`/api/users/${userId}/events`)
     .then(response => {
-      return response.data;
+      return response.data.filter((item) => {
+        return item.extendedProperties.shared.children.includes(childId);
+      });
     })
     .catch(error => {
       console.error(error);
