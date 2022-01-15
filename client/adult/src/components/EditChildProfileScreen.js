@@ -162,9 +162,7 @@ class EditChildProfileScreen extends React.Component {
       family_name,
       given_name,
       username,
-      password,
       background,
-      isAccount,
       other_info,
       gender,
       special_needs,
@@ -181,13 +179,9 @@ class EditChildProfileScreen extends React.Component {
     }
     bodyFormData.append("given_name", given_name);
     bodyFormData.append("username", username);
-    if(password !==  '' || password !==  undefined || password !==  null){
-      bodyFormData.append("password", password);
-    }
     bodyFormData.append("family_name", family_name);
     bodyFormData.append("gender", gender);
     bodyFormData.append("background", background);
-    bodyFormData.append("isAccount", isAccount);
     bodyFormData.append("other_info", other_info);
     bodyFormData.append("special_needs", special_needs);
     bodyFormData.append("allergies", allergies);
@@ -248,8 +242,6 @@ class EditChildProfileScreen extends React.Component {
       family_name,
       background,
       username,
-      password,
-      isAccount
     } = this.state;
     const texts = Texts[language].editChildProfileScreen;
     const formClass = [];
@@ -474,21 +466,6 @@ class EditChildProfileScreen extends React.Component {
                   />
                 </div>
               </div>
-              {isAccount ?(
-                <div className="col-5-10">
-                <div className="fullInput editChildProfileInputField center">
-                  <label htmlFor="surname">{texts.password}</label>
-                  <input
-                    type="password"
-                    name="password"
-                    className="form-control"
-                    onChange={this.handleChange}
-                    value={password}
-                  />
-                </div>
-              </div>
-              ):(<div></div>)
-            }
             </div>
           </form>
         </div>

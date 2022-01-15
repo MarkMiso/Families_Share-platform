@@ -49,13 +49,11 @@ class CreateChildScreen extends React.Component {
         name: "",
         surname: "",
         username:"",
-        password: "",
         gender: "unspecified",
         date: moment().date(),
         month: moment().month() + 1,
         year: moment().year(),
         acceptTerms: false,
-        isAccount: false,
         allergies: "",
         special_needs: "",
         other_info: "",
@@ -149,11 +147,9 @@ class CreateChildScreen extends React.Component {
       other_info,
       special_needs,
       background,
-      isAccount,
       image,
       file,
       username,
-      password,
     } = this.state;
     const bodyFormData = new FormData();
     if (file !== undefined) {
@@ -169,10 +165,6 @@ class CreateChildScreen extends React.Component {
     bodyFormData.append("given_name", given_name);
     bodyFormData.append("family_name", family_name);
     bodyFormData.append("username", username);
-    if(password !==  '' || password !==  undefined || password !==  null){
-      bodyFormData.append("password", password);
-    }
-    bodyFormData.append("isAccount", isAccount);
     bodyFormData.append("gender", gender);
     bodyFormData.append("background", background);
     bodyFormData.append("other_info", other_info);
@@ -264,13 +256,11 @@ class CreateChildScreen extends React.Component {
       name,
       surname,
       username,
-      password,
       gender,
       date,
       acceptAdditionalTerms,
       acceptTerms,
       background,
-      isAccount,
       image
     } = this.state;
     console.log(this.state)
@@ -485,20 +475,10 @@ class CreateChildScreen extends React.Component {
             </div>
             
             <div className="row no-gutters">
-              <div className="col-2-10">
-                <Checkbox
-                  classes={{ root: classes.checkbox, checked: classes.checked }}
-                  className="center"
-                  checked={isAccount}
-                  onClick={this.handleisAccount}
-                />
-              </div>
-              <div className="col-8-10">
-                <h1 className="verticalCenter">è un account ?</h1>
-              </div>
             </div>
             
             <div className="row no-gutters" style={bottomBorder}>
+              {
               <div className="col-5-10">
                 <input
                   type="text"
@@ -510,21 +490,7 @@ class CreateChildScreen extends React.Component {
                 />
                 <span className="invalid-feedback" id="nameErr" />
               </div>
-              {       isAccount?(     
-              <div className="col-5-10">
-                <input
-                  type="password"
-                  name="password"
-                  className="createChildProfileInputField form-control"
-                  placeholder="Password"
-                  onChange={this.handleChange}
-                  value={password}
-                />
-              <span className="invalid-feedback" id="surnameErr" />
-            </div> 
-              ):(
-                <div></div>
-              )
+              
             }
 
             </div>
