@@ -33,6 +33,7 @@ const resources = {
       "search activities" : "Search an Activity",
       "your events": "Your Events",
       "close": "Close",
+      "save": "Save",
       "mon": "Mon",
       "tue": "Tue",
       "wed": "Wed",
@@ -49,6 +50,8 @@ const resources = {
       "submit": "Submit",
       "new activity": "New Activity",
       "event list": "Event List",
+      "missing data warning": "You need to add at least one event and the activity name",
+      "child username": "Child Username",
     }
   },
   it: {
@@ -79,6 +82,7 @@ const resources = {
       "search activities": "Cerca una Attività",
       "your events": "I tuoi Eventi",
       "close": "Chiudi",
+      "save": "Salva",
       "mon": "Lun",
       "tue": "Mar",
       "wed": "Mer",
@@ -95,6 +99,8 @@ const resources = {
       "submit": "Invia",
       "new activity": "Nuova Attività",
       "event list": "Lista degli eventi",
+      "missing data warning": "Bisogna aggiungere almeno un evento e il nome della attività",
+      "child username": "Nome Utente Bambino",
     }
   }
 };

@@ -15,8 +15,9 @@ export function LoginScreen() {
     let formData = new FormData(event.currentTarget);
     let email = formData.get("email");
     let password = formData.get("password");
+    let child = formData.get("child");
 
-    auth.signin(email, password, () => { 
+    auth.signin(email, password, child, () => { 
       navigate('/myfamilyshare')
     });
   }
@@ -37,6 +38,13 @@ export function LoginScreen() {
             {t('email')}
           </label>
           <input name="email" type="text" className="transition ease-in-out duration-300 mt-1 appearance-none rounded-md w-full px-3 py-2 border-2 border-gray-300 font-semibold text-gray-900 focus:outline-none focus:ring-1 focus:border-1 focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm"/>
+        </div>
+
+        <div className="mt-5">
+          <label className="block font-semibold text-gray-500">
+            {t('child username')}
+          </label>
+          <input name="child" type="text" className="transition ease-in-out duration-300 mt-1 appearance-none rounded-md w-full px-3 py-2 border-2 border-gray-300 font-semibold text-gray-900 focus:outline-none focus:ring-1 focus:border-1 focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm"/>
         </div>
 
         <div className="mt-5">

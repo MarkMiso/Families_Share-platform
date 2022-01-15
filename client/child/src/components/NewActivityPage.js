@@ -1,11 +1,13 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { ArrowLeftIcon, CheckIcon, SelectorIcon, UserGroupIcon, ChevronDoubleRightIcon, DocumentTextIcon, LocationMarkerIcon, LinkIcon, ColorSwatchIcon, PlusIcon, CalendarIcon, ClockIcon, XIcon } from "@heroicons/react/outline";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Listbox, Transition, Dialog } from '@headlessui/react';
 import { fetchGroups } from "../services/userService";
 import { fetchGroup } from "../services/GroupService";
 import { useAuth } from "./AuthProvider";
 import { useTranslation } from "react-i18next";
+import moment from "moment";
+import { createActivity } from "../services/ActivityService";
 
 function NewActivityPage() {
   const auth = useAuth();
@@ -14,6 +16,8 @@ function NewActivityPage() {
   const [eventList, setEventList] = useState(null);
   const [showEventForm, setShowEventForm] = useState(false); 
   const [activityColor, setActivityColor] = useState("#f44336");
+  const [showError, setShowError] = useState(false);
+  const navigate = useNavigate();
   let { t } = useTranslation();
 
   useEffect(() => {
@@ -31,7 +35,71 @@ function NewActivityPage() {
   },[auth.user.id])
 
   function handleSubmit(event) {
-    //todo: handle submit
+    event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+
+    const name = formData.get("name");
+    const description = formData.get("description");
+    const location = formData.get("location");
+    const link = formData.get("link");
+
+    if (!name || eventList === null || eventList.length === 0) {
+      setShowError(true);
+    } else {
+      const activity = {
+        group_id: selected.group_id,
+        creator_id: auth.user.id,
+        name: name,
+        color: activityColor,
+        description: description,
+        location: location,
+        repetition: false,
+        repetition_type: "",
+        different_timeslots: false,
+      }
+
+      const events = eventList.map((event) => {
+        const startTime = event.start.toISOString();
+        const endTime = event.end.toISOString();
+
+        return {
+          description: description,
+          location: location,
+          summary: name,
+          start: {
+            dateTime: startTime,
+            date: null,
+          },
+          end: {
+            dateTime: endTime,
+            date: null,
+          },
+          extendedProperties: {
+            shared: {
+              requiredParents: 1,
+              requiredChildren: 1,
+              cost: "",
+              parents: JSON.stringify([]),
+              children: JSON.stringify([]),
+              externals: JSON.stringify([]),
+              status: "ongoing",
+              link: link,
+              activityColor: activityColor,
+              category: "other",
+              groupId: selected.group_id,
+              repetition: "none",
+              start: startTime.substr(0, startTime.indexOf(":")),
+              end: endTime.substr(0, startTime.indexOf(":")),
+            }
+          }
+        }
+      })
+
+      createActivity(selected.group_id, activity, events);
+      navigate('/myfamilyshare')
+    }
+    
   }
 
   function handleAddEvent(event) {
@@ -39,9 +107,10 @@ function NewActivityPage() {
 
     const formData = new FormData(event.currentTarget);
     let newEvent = {};
-    newEvent.date = formData.get('date');
-    newEvent.startTime = formData.get('from');
-    newEvent.endTime = formData.get('to');
+    
+    const date = formData.get('date');
+    newEvent.start = new Date(date + " " + formData.get('from'));
+    newEvent.end = new Date(date + " " + formData.get('to'));
 
     if (eventList) {
       setEventList([...eventList, newEvent]);
@@ -57,7 +126,7 @@ function NewActivityPage() {
       <div className="flex items-center pb-5 mx-5 mt-5 font-semibold border-b-2 border-gray-200">
         <div className="flex items-center p-3 rounded-md border-2 border-gray-200 shadow-inner">
           <p className="text-gray-500">
-            {event.date}
+            {moment(event.start).format("MMM D")}
           </p>
         </div>
         <div className="px-5 text-left">
@@ -65,7 +134,7 @@ function NewActivityPage() {
             tets
           </p>
           <p className="text-gray-400">
-            {event.startTime} - {event.endTime}
+            {moment(event.start).format("HH:mm")} - {moment(event.end).format("HH:mm")}
           </p>
         </div>
         <div className="shadow-inner p-1 ml-auto rounded-md text-purple-500 border-purple-500 border-2 hover:bg-purple-500 hover:text-white cursor-pointer" onClick={() => setEventList(eventList.filter((item) => {return event !== item}))}>
@@ -157,7 +226,7 @@ function NewActivityPage() {
           <div className="mt-3 w-full p-5 shadow-md rounded-xl bg-white divide-y text-gray-900">
             <div className="flex items-center">
               <ChevronDoubleRightIcon className="h-6 w-6 mr-5"/>
-              <input name="title" type="text" className="w-full focus:outline-none font-semibold" placeholder={t('name')}/>
+              <input name="name" type="text" className="w-full focus:outline-none font-semibold" placeholder={t('name')}/>
             </div>
             <div className="flex items-center mt-5 pt-5">
               <DocumentTextIcon className="h-6 w-6 mr-5"/>
@@ -239,13 +308,29 @@ function NewActivityPage() {
               </div>
               <div className="bg-white flex divide-x-2 text-gray-500 text-lg">
                 <div className="flex-1 font-semibold text-center hover:bg-gray-100 p-3" onClick={() => setShowEventForm(false)}>
-                  close
+                  {t('close')}
                 </div>
                 <button type="submit" className="flex-1 font-semibold hover:bg-gray-100 p-3">
-                  save
+                  {t('save')}
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+      </Dialog>
+
+      <Dialog onClose={() => setShowError(false)} open={showError} className="fixed z-10 inset-0 overflow-y-auto">
+        <div className="flex items-center justify-center min-h-screen">
+          <Dialog.Overlay className="fixed inset-0 bg-black opacity-30" />
+          <div className="relative max-w-sm mx-auto">
+            <div className="bg-white rounded-xl grid grid-cols-1 divide-y-2 divide-gray-200 shadow-md overflow-hidden">
+              <p className="p-5 font-semibold">
+                {t('missing data warning')}
+              </p>
+              <button className="flex-1 font-semibold text-gray-500 hover:bg-gray-100 p-3" onClick={() => setShowError(false)}>
+                {t('close')}
+              </button>
+            </div>
           </div>
         </div>
       </Dialog>

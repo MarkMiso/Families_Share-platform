@@ -9,12 +9,12 @@ function AuthProvider({ children }) {
   let storedUser = JSON.parse(localStorage.getItem("user"));
   let [user, setUser] = React.useState(storedUser);
 
-  let signin = (email, password, callback) => {
+  let signin = (email, password, child, callback) => {
     const deviceToken = localStorage.getItem("deviceToken");
     const origin = window.isNative ? "native" : "web";
 
     // TODO: actual error handling
-    return AuthService.signin(email, password, origin, deviceToken, (user) => {
+    return AuthService.signin(email, password, child, origin, deviceToken, (user) => {
       setUser(user);
       callback();
     }).catch(error => console.log(error));

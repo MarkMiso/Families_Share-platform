@@ -1,10 +1,11 @@
 import axios from "axios";
 
-function signin(email, password, origin, deviceToken, callback) {
+function signin(email, password, child, origin, deviceToken, callback) {
   const language = "it"; // TODO: read from local storage
   const data = {
     email,
     password,
+    username: child,
     deviceToken,
     language,
     origin

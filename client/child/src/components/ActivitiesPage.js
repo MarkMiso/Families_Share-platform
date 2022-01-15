@@ -22,7 +22,6 @@ function ActivitiesPage() {
   let auth = useAuth();
   let [events, setEvents] = useState(null);
   let [activities, setActivities] = useState(null);
-  let [groups, setGroups] = useState(null);
   let { t } = useTranslation();
 
   useEffect(() => {
@@ -44,21 +43,6 @@ function ActivitiesPage() {
 
     setData();
   },[auth.user.id]);
-
-  // TODO: actual loop
-  useEffect(() => {
-    if (groups) {
-      groups.forEach((group) => {
-        async function addData() {
-          let activitiesRes = await fetchActivites(group.group_id);
-
-          setActivities(activitiesRes)
-        }
-
-        addData();
-      })
-    }
-  },[groups])
 
   return(
     <div name="GroupsPageContainer">

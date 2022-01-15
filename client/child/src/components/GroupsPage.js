@@ -41,8 +41,6 @@ function GroupsPage() {
         return group
       })
 
-      console.log(searchRes)
-
       setSearch(searchRes);
       setGroups(groupRes);
     }

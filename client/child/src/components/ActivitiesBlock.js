@@ -25,8 +25,8 @@ function ActivitiesBlock({ activity }) {
   },[activity, isOpen])
 
   return (
-    <div>
-      <div className="cursor-pointer flex items-center mb-5 mx-5 pt-5 font-semibold" 
+    <div className="mb-5 mx-5 pt-5">
+      <div className="cursor-pointer flex items-center font-semibold" 
         onClick={() =>{
           setIsOpen(true)
       }}>
@@ -51,13 +51,13 @@ function ActivitiesBlock({ activity }) {
       <Dialog onClose={() => setIsOpen(false)} open={isOpen} className="fixed z-10 inset-0 overflow-y-auto">
         <div className="flex items-center justify-center min-h-screen">
           <Dialog.Overlay className="fixed inset-0 bg-black opacity-30" />
-            <div className="relative max-w-sm mx-auto">
-              <List data={activityEvents} blockInfo={{type: "event"}}>
-                <button className="bg-white p-3 font-semibold text-gray-500 text-lg hover:bg-gray-100  focus:outline-none " onClick={() => setIsOpen(false)}>
-                  {t('close')}
-                </button>
-              </List>
-            </div>
+          <div className="relative max-w-sm mx-auto">
+            <List data={activityEvents} blockInfo={{type: "event"}}>
+              <button className="bg-white p-3 font-semibold text-gray-500 text-lg hover:bg-gray-100  focus:outline-none " onClick={() => setIsOpen(false)}>
+                {t('close')}
+              </button>
+            </List>
+          </div>
         </div>
       </Dialog>
     </div>
