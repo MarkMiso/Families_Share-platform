@@ -131,7 +131,7 @@ function NewActivityPage() {
         </div>
         <div className="px-5 text-left">
           <p className={`text-xl inline-block font-black  text-activity-${activityColor}`}>
-            tets
+            
           </p>
           <p className="text-gray-400">
             {moment(event.start).format("HH:mm")} - {moment(event.end).format("HH:mm")}
