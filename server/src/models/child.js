@@ -16,10 +16,6 @@ const childSchema = new mongoose.Schema(
       type:String,
       unique: true
     },
-    password:{
-      type:String,
-      minLength: 0
-    },
     family_name: {
       type: String,
       required: true
@@ -43,9 +39,6 @@ const childSchema = new mongoose.Schema(
     suspended: {
       type: Boolean,
       required: true
-    },
-    isAccount:{
-      type: Boolean,
     },
     deviceToken:{
       type: String,

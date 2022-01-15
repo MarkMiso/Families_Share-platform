@@ -44,7 +44,8 @@ router.post('/authenticate/email', async (req, res, next) => {
   } = req.body
   try {
     const user = await User.findOne({ email })
-    const child_parent = await Child.findOne({email: username})
+    const child_parent = await Child.findOne({username})
+    console.log(child_parent)
     if (!user || !child_parent) {
       return res.status(401).send('Authentication failure')
     }

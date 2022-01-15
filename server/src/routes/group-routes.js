@@ -1822,7 +1822,7 @@ router.post('/:groupId/announcements/:announcementId/replies',
     } catch (error) {
       next(error)
     }
-  })
+})
 
 router.get('/:groupId/announcements/:announcementId/replies',
   (req, res, next) => {
