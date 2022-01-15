@@ -24,7 +24,7 @@ function ProfileDropdown() {
         <span className="sr-only">Open user menu</span>
         <img
           className="h-8 w-8 rounded-full"
-          src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+          src={auth.user.child_image.path}
           alt=""
         />
       </Menu.Button>
@@ -41,15 +41,8 @@ function ProfileDropdown() {
       <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg p-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
         <Menu.Item>
           {({ active }) => (
-            <Link to="#" className={classNames(active ? 'bg-gray-100' : '', 'rounded-md block px-4 py-2 text-sm text-gray-700')}>
-              {t('profile')}
-            </Link>
-          )}
-        </Menu.Item>
-        <Menu.Item>
-          {({ active }) => (
-            <Link to="#" className={classNames(active ? 'bg-gray-100' : '', 'rounded-md mt-1 block px-4 py-2 text-sm text-gray-700')}>
-              {t('settings')}
+            <Link to="/myfamilyshare/faq" className={classNames(active ? 'bg-gray-100' : '', 'rounded-md block px-4 py-2 text-sm text-gray-700')}>
+              {t('faq')}
             </Link>
           )}
         </Menu.Item>

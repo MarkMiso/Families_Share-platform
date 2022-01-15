@@ -45,6 +45,11 @@ const NewActivityPage = Loadable({
   loading: () => Loading
 })
 
+const FAQ = Loadable({
+  loader: () => import("./components/FAQPage"),
+  loading: () => Loading
+})
+
 axios.interceptors.request.use(
   config => {
     let userToken = "";
@@ -75,7 +80,8 @@ function App() {
             <Route path="/myfamilyshare/groups" element={<RequireAuth> <GroupsPage /> </RequireAuth>} />
             <Route path="/myfamilyshare/activities" element={<RequireAuth> <ActivitiesPage /> </RequireAuth>} />
             <Route path="/myfamilyshare/activities/new" element={<RequireAuth> <NewActivityPage /> </RequireAuth>} />
-            <Route path="/myfamilyshare/calendar" element={<RequireAuth> <CalendarPage /> </RequireAuth>} />            
+            <Route path="/myfamilyshare/calendar" element={<RequireAuth> <CalendarPage /> </RequireAuth>} />
+            <Route path="/myfamilyshare/faq" element={<RequireAuth> <FAQ/> </RequireAuth>} />         
           </Routes>
         </body>
       </AuthProvider>

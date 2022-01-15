@@ -18,7 +18,7 @@ export function LoginScreen() {
     let child = formData.get("child");
 
     auth.signin(email, password, child, () => { 
-      navigate('/myfamilyshare')
+      navigate('/myfamilyshare/faq')
     });
   }
 

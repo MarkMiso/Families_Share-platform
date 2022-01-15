@@ -8,6 +8,8 @@ import ActivitiesBlock from "./ActivitiesBlock";
 import LoadingSpinner from "./LoadingSpinner";
 
 function Block( {item, blockInfo} ) {
+  let { t } = useTranslation();
+
   if (blockInfo.type === "group") {
     return (
       <GroupBlock groupId={item.group_id} isMember={item.isMember}/>
@@ -23,6 +25,19 @@ function Block( {item, blockInfo} ) {
   if (blockInfo.type === "activity") {
     return (
       <ActivitiesBlock activity={item}/>
+    )
+  }
+
+  if (blockInfo.type === "text") {
+    return (
+      <div className="mb-5 mx-5 pt-5 ">
+        <p className="font-semibold text-gray-900 text-xl">
+          {t(item.title)}
+        </p>
+        <p className="font-semibold text-gray-400 mt-3 text-md">
+          {t(item.body)}
+        </p>
+      </div>
     )
   }
 

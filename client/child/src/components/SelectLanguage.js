@@ -34,7 +34,7 @@ function SelectLanguage() {
           <Menu.Item>
             {({ active }) => (
               <div className={classNames(active ? 'bg-gray-100' : '', 'rounded-md')}>
-                <button className="block px-4 py-2 text-sm text-gray-700 w-full text-left" onClick={() => i18n.changeLanguage('en')}>
+                <button className="block px-4 py-2 text-sm text-gray-700 w-full text-left" onClick={() => {i18n.changeLanguage('en'); localStorage.setItem("language", "en")}}>
                   English
                 </button>
               </div>
@@ -43,7 +43,7 @@ function SelectLanguage() {
           <Menu.Item>
             {({ active }) => (
               <div className={classNames(active ? 'bg-gray-100' : '', 'mt-1 rounded-md')}>
-              <button className="block px-4 py-2 text-sm text-gray-700 w-full text-left" onClick={() => i18n.changeLanguage('it')}>
+              <button className="block px-4 py-2 text-sm text-gray-700 w-full text-left" onClick={() => {i18n.changeLanguage('it'); localStorage.setItem("language", "it")}}>
                 Italiano
               </button>
             </div>

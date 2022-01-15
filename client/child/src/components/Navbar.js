@@ -7,7 +7,6 @@ import { Disclosure } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import SelectLanguage from "./SelectLanguage";
 import ProfileDropdown from "./ProfileDropdown";
-import Notifications from "./Notifications"
 import { useAuth } from "./AuthProvider";
 
 function classNames(...classes) {
@@ -22,7 +21,6 @@ function Navbar({ navigation }) {
   if (auth.user) {
     circles = (
       <>
-        <Notifications />
         <ProfileDropdown />
       </>
     )
