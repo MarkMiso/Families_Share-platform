@@ -18,6 +18,7 @@ const Community = require('../models/community')
 const Child = require('../models/child')
 
 router.get('/', (req, res, next) => {
+  console.log(req)
   if (!req.user_id) { return res.status(401).send('Not authenticated') }
   const { ids } = req.query
   if (!ids) {
@@ -43,10 +44,12 @@ router.post('/authenticate/email', async (req, res, next) => {
   } = req.body
   try {
     const user = await User.findOne({ email })
-    const child_parent = await Child.findOne({ username })
-    if (!user && !child_parent) {
+    const child_parent = await Child.findOne({email: username})
+    if (!user || !child_parent) {
       return res.status(401).send('Authentication failure')
     }
+    const image_id =child_parent.image_id
+    const image_child = await Image.findOne({ image_id })
     const passwordMatch = await user.comparePassword(password)
     if (!passwordMatch) {
       return res.status(401).send('Authentication failure')
@@ -85,6 +88,7 @@ router.post('/authenticate/email', async (req, res, next) => {
       token,
       role: user.role,
       child: child_parent,
+      child_image: image_child
     }
     user.last_login = new Date()
     user.language = language
@@ -100,6 +104,7 @@ router.post('/authenticate/email', async (req, res, next) => {
     next(error)
   }
 })
+
 
 router.post('/groups/:id', async (req, res, next) => {
   if (!req.user_id) { return res.status(401).send('Not authenticated') }
@@ -126,15 +131,7 @@ router.get('/:id/children', async (req, res, next) => {
 })
 
 
-router.get('/:id/children/', async (req, res, next) => {
-  const { id } = req.params
-  const members = await Member.find({ group_id: id, user_accepted: true, group_accepted: true }).distinct('user_id')
-  const children = await Parent.find({ parent_id: { $in: members } }).distinct('child_id')
-  if (children.length === 0) {
-    return res.status(404).send('Group has no children')
-  }
-  return res.json([...new Set(children)])
-})
+
 
 
 

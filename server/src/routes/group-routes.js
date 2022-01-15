@@ -1387,8 +1387,7 @@ router.post('/:groupId/activities/:activityId/export',
   }
 )
 
-router.get('/:groupId/activities/:activityId/timeslots',
-  async (req, res, next) => {
+router.get('/:groupId/activities/:activityId/timeslots',async (req, res, next) => {
     if (!req.user_id) {
       return res.status(401).send('Not authenticated')
     }
@@ -1670,6 +1669,7 @@ router.delete('/:groupId/activities/:activityId/timeslots/:timeslotId',
     }
   }
 )
+
 router.get('/:id/announcements', (req, res, next) => {
   if (!req.user_id) {
     return res.status(401).send('Not authenticated')
