@@ -1,14 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
 import { UserAddIcon, UserRemoveIcon } from '@heroicons/react/outline';
 import { useAuth } from "./AuthProvider";
 import { addChild, removeChild } from "../services/EventService";
-import { useNavigate } from "react-router";
 
 function EventBlock({ event }) {
   const auth = useAuth();
-  const navigate = useNavigate();
   let date = moment(event.start.dateTime).format("MMM D");
   let startTime = moment(event.start.dateTime).format("HH:mm");
   let endTime = moment(event.end.dateTime).format("HH:mm");
